@@ -1,0 +1,21 @@
+/* 
+    Document   : yii-money
+    Created on : Feb 1, 2012, 10:39:02 PM
+    Author     : dandeluca
+
+*/
+
+
+/** General **/
+.body {margin-top: 65px;padding: 15px;}
+
+
+
+/** Headings **/
+h1 {font-size: 24px;line-height: 36px;}
+
+
+/** Grids **/
+.grid-view table.items th {background: none repeat scroll 0 0 #666666;}
+
+.portlet {width:300px;}
