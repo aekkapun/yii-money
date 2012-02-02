@@ -8,7 +8,7 @@
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	//'defaultController' => 'login',
-	'name'=>'Dii Personal Finance',
+	'name'=>'Yii Personal Finance',
 
 	// preloading 'log' component
 	'preload'=>array('log'),
