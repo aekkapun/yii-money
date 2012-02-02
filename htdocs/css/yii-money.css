@@ -59,3 +59,5 @@ ul.yiiPager a:link, ul.yiiPager a:visited {
   background: none;
   color: #666666;
 }
+.portlet-content {
+    background: none repeat scroll 0 0 #FFFFFF;}
