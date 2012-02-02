@@ -50,3 +50,12 @@ ul.yiiPager a:link, ul.yiiPager a:visited {
 }
 
 .navbar-fixed-top{margin: 0 20px 18px;}
+.nav-list > li > a, .nav-list .nav-header {
+  margin-left: 0;
+  margin-right: 0;}
+
+.nav > li > a:hover {
+  text-decoration: none;
+  background: none;
+  color: #666666;
+}
