@@ -12,10 +12,7 @@
 		<![endif]-->
 		<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
 		<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
-		<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/twitter-bootstrap/bootstrap.css" />
-		<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/Nii.css" />
-		<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/yii-money.css" />
-		<?php Yii::app()->controller->init(); ?>  <!-- trying to load style sheets after yii assets-->
+		<?php Controller::initCss(); ?>  <!-- trying to load style sheets after yii assets-->
 
 		<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 

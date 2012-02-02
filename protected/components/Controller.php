@@ -25,11 +25,11 @@ class Controller extends CController
 	/**
 	 * trying to load style sheets after yii assets DDL
 	 */
-public function init(){
-          
-        $CssFiles = array('Nii','yii-money');
+public function initCss(){
+
+        $CssFiles = array('bootstrap','Nii','yii-money');
         foreach($CssFiles as $Css){
-               Yii::app()->clientScript->registerCssFile('/css/'.$Css.'.css', '');
+               Yii::app()->clientScript->registerCssFile(Yii::app()->request->baseUrl.'/css/'.$Css.'.css', '');
         }
     }
 	

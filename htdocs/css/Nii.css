@@ -64,7 +64,7 @@ body.fixed.show-logo .body {top:95px;}
 }
 
 .grid-view table th {
-	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+/*	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);*/
 	background-image: -khtml-gradient(linear, left top, left bottom, from(#ecf7fd), to(#cee8f7));
 	background-image: -moz-linear-gradient(top, #ecf7fd, #cee8f7);
 	background-image: -ms-linear-gradient(top, #ecf7fd, #cee8f7);
