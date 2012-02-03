@@ -16,8 +16,21 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'TransDate'); ?>
-		<?php echo $form->textField($model,'TransDate'); ?>
+		<?php echo $form->labelEx($model, 'TransDate'); ?>
+		<?php
+		// TODO - set correct date format and test datepicker
+		$this->widget('zii.widgets.jui.CJuiDatePicker', array(
+			'name' => 'TransDate',
+			// additional javascript options for the date picker plugin
+			'options' => array(
+				'showAnim' => 'fold',
+			),
+			'htmlOptions' => array(
+				'style' => 'height:20px;'
+			),
+		));
+		?>
+		<?php// echo $form->textField($model,'TransDate'); ?>
 		<?php echo $form->error($model,'TransDate'); ?>
 	</div>
 
