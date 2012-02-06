@@ -23,7 +23,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Sub Cats</h1>
+<h1>Manage Sub Categories</h1>
 
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
@@ -45,7 +45,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
 	'columns' => array(
 		array(
 			'name' => 'CatId',
-			'value' => '$data->cat->CategoryName',
+			'value' => '$data->cats->CategoryName',
 		),
 		'SubCatName',
 		'CatType',

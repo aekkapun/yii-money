@@ -10,15 +10,15 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'AccName'); ?>
-		<?php echo $form->textField($model,'AccName',array('size'=>50,'maxlength'=>50)); ?>
-		<?php echo $form->error($model,'AccName'); ?>
+		<?php echo $form->labelEx($model,'AccTypeId'); ?>
+		<?php echo $form->dropDownList($model,'AccTypeId', CHtml::listData(AccType::model()->findAll(), 'Id', 'AccTypeName')); ?>
+		<?php echo $form->error($model,'AccTypeId'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'AccTypeId'); ?>
-		<?php echo $form->textField($model,'AccTypeId'); ?>
-		<?php echo $form->error($model,'AccTypeId'); ?>
+		<?php echo $form->labelEx($model,'AccName'); ?>
+		<?php echo $form->textField($model,'AccName',array('size'=>50,'maxlength'=>50)); ?>
+		<?php echo $form->error($model,'AccName'); ?>
 	</div>
 
 	<div class="row">

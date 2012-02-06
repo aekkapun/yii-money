@@ -6,13 +6,13 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List SubCats', 'url'=>array('index')),
-	array('label'=>'Create SubCats', 'url'=>array('create')),
-	array('label'=>'View SubCats', 'url'=>array('view', 'id'=>$model->Id)),
-	array('label'=>'Manage SubCats', 'url'=>array('admin')),
+	array('label'=>'List Sub Categories', 'url'=>array('index')),
+	array('label'=>'Create Sub Categories', 'url'=>array('create')),
+	array('label'=>'View Sub Categories', 'url'=>array('view', 'id'=>$model->Id)),
+	array('label'=>'Manage Sub Categories', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Update SubCats <?php echo $model->Id; ?></h1>
+<h1>Update Sub Categories <?php echo $model->Id; ?></h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

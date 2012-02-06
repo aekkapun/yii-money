@@ -4,8 +4,8 @@
 	<?php echo CHtml::link(CHtml::encode($data->Id), array('view', 'id'=>$data->Id)); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('AccountName')); ?>:</b>
-	<?php echo CHtml::encode($data->AccountName); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('AccountId')); ?>:</b>
+	<?php echo CHtml::encode($data->AccountId); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('TransDate')); ?>:</b>

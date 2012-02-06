@@ -53,7 +53,7 @@ class AccType extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'accounts' => array(self::HAS_MANY, 'Accounts', 'AccTypeId'),
+			'accounts' => array(self::HAS_MANY, 'accounts', 'AccTypeId'),
 		);
 	}
 
@@ -64,7 +64,7 @@ class AccType extends CActiveRecord
 	{
 		return array(
 			'Id' => 'ID',
-			'AccTypeName' => 'Acc Type Name',
+			'AccTypeName' => 'Account Type Name',
 		);
 	}
 

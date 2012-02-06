@@ -12,7 +12,7 @@
 
 	<div class="row">
 		<?php echo $form->label($model,'AccountName'); ?>
-		<?php echo $form->textField($model,'AccountName',array('size'=>40,'maxlength'=>40)); ?>
+		<?php echo $form->textField($model,'AccountId',array('size'=>40,'maxlength'=>40)); ?>
 	</div>
 
 	<div class="row">

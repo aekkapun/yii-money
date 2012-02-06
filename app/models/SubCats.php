@@ -1,4 +1,4 @@
-<?php
+	<?php
 
 /**
  * This is the model class for table "SubCats".
@@ -54,7 +54,8 @@ class SubCats extends CActiveRecord {
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'cat' => array(self::BELONGS_TO, 'Cats', 'CatId'),
+			'cats' => array(self::BELONGS_TO, 'cats', 'CatId'),
+			'transactions' => array(self::BELONGS_TO, 'transactions', 'CatId'),
 		);
 	}
 
@@ -65,8 +66,8 @@ class SubCats extends CActiveRecord {
 		return array(
 			'Id' => 'ID',
 			'CatId' => 'Parent Category',
-			'SubCatName' => 'Sub Category Name',
-			'CatType' => 'Sub Category Type',
+			'SubCatName' => 'Sub Category',
+			'CatType' => 'Type',
 		);
 	}
 

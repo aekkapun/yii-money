@@ -5,7 +5,7 @@
  *
  * The followings are the available columns in table 'Transactions':
  * @property integer $Id
- * @property string $AccountName
+ * @property integer $AccountId
  * @property string $TransDate
  * @property string $TransType
  * @property integer $PayeeId
@@ -45,13 +45,12 @@ class Transactions extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('AccountName, TransDate, TransType, PayeeId, CatId, TransAmount', 'required'),
-			array('PayeeId, CatId, TransId, SubCatId', 'numerical', 'integerOnly'=>true),
-			array('AccountName', 'length', 'max'=>40),
+			array('AccountId, TransDate, TransType, PayeeId, CatId, TransAmount', 'required'),
+			array('AccountId PayeeId, CatId, TransId, SubCatId', 'numerical', 'integerOnly'=>true),
 			array('TransType, TransAmount', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('Id, AccountName, TransDate, TransType, PayeeId, CatId, TransAmount, TransId, SubCatId', 'safe', 'on'=>'search'),
+			array('Id, AccountId, TransDate, TransType, PayeeId, CatId, TransAmount, TransId, SubCatId', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -63,7 +62,10 @@ class Transactions extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'payee' => array(self::BELONGS_TO, 'Payee', 'PayeeId'),
+			'accounts' => array(self::BELONGS_TO, 'accounts', 'AccountId'),
+			'payees' => array(self::BELONGS_TO, 'payees', 'PayeeId'),
+			'cats' => array(self::BELONGS_TO, 'cats', 'CatId'),
+			'subCats' => array(self::BELONGS_TO, 'subCats', 'CatId'),
 		);
 	}
 
@@ -74,13 +76,13 @@ class Transactions extends CActiveRecord
 	{
 		return array(
 			'Id' => 'ID',
-			'AccountName' => 'Account',
+			'AccountId' => 'Account',
 			'TransDate' => 'Date',
 			'TransType' => 'Type',
 			'PayeeId' => 'Payee',
 			'CatId' => 'Category',
 			'TransAmount' => 'Amount',
-			'TransId' => 'Trans',
+			'TransId' => 'Trans Id',
 			'SubCatId' => 'Sub Category',
 		);
 	}
@@ -97,7 +99,7 @@ class Transactions extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 	//	$criteria->compare('Id',$this->Id);
-		$criteria->compare('AccountName',$this->AccountName,true);
+		$criteria->compare('AccountId',$this->AccountId,true);
 		$criteria->compare('TransDate',$this->TransDate,true);
 		$criteria->compare('TransType',$this->TransType,true);
 		$criteria->compare('PayeeId',$this->PayeeId);

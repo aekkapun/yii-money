@@ -68,9 +68,9 @@ class Accounts extends CActiveRecord
 	{
 		return array(
 			'Id' => 'ID',
-			'AccName' => 'Acc Name',
-			'AccTypeId' => 'Acc Type',
-			'OverDraftLimit' => 'Over Draft Limit',
+			'AccName' => 'Account Name',
+			'AccTypeId' => 'Account Type',
+			'OverDraftLimit' => 'Overdraft Limit',
 		);
 	}
 

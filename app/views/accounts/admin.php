@@ -41,13 +41,18 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'id'=>'accounts-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
-	'columns'=>array(
-		'Id',
+	'columns'=> array(
+		array(
+			'name' => 'AccTypeId',
+			'value' => '$data->accType->AccTypeName',
+		),
 		'AccName',
-		'AccTypeId',
 		'OverDraftLimit',
 		array(
 			'class'=>'CButtonColumn',
-		),
-	),
+		)
+	)
 )); ?>
+
+
+

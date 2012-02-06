@@ -19,7 +19,7 @@ $this->menu=array(
 	'data'=>$model,
 	'attributes'=>array(
 		'Id',
-		'AccountName',
+		'AccountId',
 		'TransDate',
 		'TransType',
 		'PayeeId',
