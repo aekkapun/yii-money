@@ -15,7 +15,6 @@
 		$this->widget('zii.widgets.jui.CJuiDatePicker', array(
 			'model'=>$model,
 			'attribute' => 'TransDate',
-			// additional javascript options for the date picker plugin
 			'options' => array(
 				'showAnim' => 'fold',
 				'dateFormat' => 'yy-mm-dd',

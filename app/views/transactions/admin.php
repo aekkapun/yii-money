@@ -50,7 +50,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
 			'value' => '$data->accounts->AccName'
 		), array(
 			'name' => 'TransDate',
-			'value' => 'date("d M Y, D", $data->TransDate)',
+			'value'=>'date("M j, Y", $data->transDateInt)',
 		),
 		'TransType',
 		array(

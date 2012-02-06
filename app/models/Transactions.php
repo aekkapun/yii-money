@@ -112,4 +112,12 @@ class Transactions extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+	
+	public function getTransDateInt(){
+		return strtotime($this->TransDate);
+	}
+	
+	public function displayTransDate($format="M j, Y"){
+		return date($format, $this->transDateInt);
+	}
 }
