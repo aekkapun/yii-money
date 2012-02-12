@@ -26,7 +26,7 @@ class Controller extends CController
 	 * trying to load style sheets after yii assets DDL
 	 */
 	public function initCSS(){
-		$CssFiles = array('bootstrap','Nii','yii-money');
+		$CssFiles = array('bootstrap','bootstrap-responsive','yii-money');
 		foreach($CssFiles as $Css){
 			Yii::app()->clientScript->registerCssFile(Yii::app()->request->baseUrl.'/css/'.$Css.'.css', '');
 		}
