@@ -1,4 +1,4 @@
-<div class="view">
+<div class="well">
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('Id')); ?>:</b>
 	<?php echo CHtml::link(CHtml::encode($data->Id), array('view', 'id'=>$data->Id)); ?>
@@ -28,15 +28,5 @@
 	<?php echo CHtml::encode($data->TransAmount); ?>
 	<br />
 
-	<?php /*
-	<b><?php echo CHtml::encode($data->getAttributeLabel('TransId')); ?>:</b>
-	<?php echo CHtml::encode($data->TransId); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('SubCatId')); ?>:</b>
-	<?php echo CHtml::encode($data->SubCatId); ?>
-	<br />
-
-	*/ ?>
 
 </div>

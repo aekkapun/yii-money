@@ -15,6 +15,8 @@ body {
     padding: 9px 0;
 }
 
+span.required{color:#ff0000;}
+
 /** Headings **/
 h1 {font-size: 24px;line-height: 36px;}
 
