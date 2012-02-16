@@ -64,8 +64,8 @@ return array(
 		),
 		
 		'errorHandler'=>array(
-			// use 'site/error' action to display errors
-            'errorAction'=>'site/error',
+			// use 'admin/error' action to display errors
+            'errorAction'=>'admin/error',
         ),
 		'log'=>array(
 			'class'=>'CLogRouter',

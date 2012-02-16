@@ -17,15 +17,14 @@
 						$this->widget('zii.widgets.CMenu', array(
 							'htmlOptions' => array('class' => 'nav'),
 							'items' => array(
-//										array('label' => 'Home', 'url' => array('/site/index')),
 								array('label' => 'Transactions', 'url' => array('/transactions/admin')),
 								array('label' => 'Payees', 'url' => array('/payees/admin')),
 								array('label' => 'Categories', 'url' => array('/cats/admin')),
 								array('label' => 'Sub Categories', 'url' => array('/subcats/admin')),
 								array('label' => 'Accounts', 'url' => array('/accounts/admin')),
 								array('label' => 'Account Types', 'url' => array('/acctype/admin')),
-								array('label' => 'Login', 'url' => array('/site/login'), 'visible' => Yii::app()->user->isGuest),
-								array('label' => 'Logout (' . Yii::app()->user->name . ')', 'url' => array('/site/logout'), 'visible' => !Yii::app()->user->isGuest)
+								array('label' => 'Login', 'url' => array('/admin/login'), 'visible' => Yii::app()->user->isGuest),
+								array('label' => 'Logout (' . Yii::app()->user->name . ')', 'url' => array('/admin/logout'), 'visible' => !Yii::app()->user->isGuest)
 							),
 						));
 						?>
@@ -38,10 +37,6 @@
 			<div class="row-fluid">
 				<?php echo $content; ?>
 			</div>
-			<hr>
-			<footer>
-				<p>Copyright &copy; <?php echo date('Y'); ?> by Dan De Luca.<br/>All Rights Reserved.<br/><?php echo Yii::powered(); ?></p>
-			</footer>
 		</div>
 	</body>
 </html>
