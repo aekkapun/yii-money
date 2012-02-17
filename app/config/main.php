@@ -38,16 +38,13 @@ return array(
 		'user'=>array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
+			'loginUrl'=> array('/admin/login')
 		),
 		// uncomment the following to enable URLs in path-format
 		
 		'urlManager'=>array(
+			'showScriptName'=>false, 
 			'urlFormat'=>'path',
-			'rules'=>array(
-				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
-				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
-				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
-			),
 		),
 		
 //		'db'=>array(
