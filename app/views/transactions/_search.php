@@ -31,11 +31,6 @@
 	</div>
 
 	<div class="control-group">
-		<?php echo $form->label($model,'CatId'); ?>
-		<?php echo $form->textField($model,'CatId'); ?>
-	</div>
-
-	<div class="control-group">
 		<?php echo $form->label($model,'TransAmount'); ?>
 		<?php echo $form->textField($model,'TransAmount',array('size'=>10,'maxlength'=>10)); ?>
 	</div>

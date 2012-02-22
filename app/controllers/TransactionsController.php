@@ -94,7 +94,7 @@ class TransactionsController extends Controller
 		{
 			$model->attributes=$_POST['Transactions'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->Id));
+				$this->redirect(array('admin'));
 		}
 
 		$this->render('update',array(

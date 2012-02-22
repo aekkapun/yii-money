@@ -19,11 +19,7 @@
 	<b><?php echo CHtml::encode($data->getAttributeLabel('PayeeId')); ?>:</b>
 	<?php echo CHtml::encode($data->PayeeId); ?>
 	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('CatId')); ?>:</b>
-	<?php echo CHtml::encode($data->CatId); ?>
-	<br />
-
+	
 	<b><?php echo CHtml::encode($data->getAttributeLabel('TransAmount')); ?>:</b>
 	<?php echo CHtml::encode($data->TransAmount); ?>
 	<br />

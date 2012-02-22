@@ -55,7 +55,6 @@ class SubCats extends CActiveRecord {
 		// class name for the relations automatically generated below.
 		return array(
 			'cats' => array(self::BELONGS_TO, 'cats', 'CatId'),
-			'transactions' => array(self::BELONGS_TO, 'transactions', 'CatId'),
 		);
 	}
 
@@ -90,6 +89,20 @@ class SubCats extends CActiveRecord {
 		return new CActiveDataProvider($this, array(
 					'criteria' => $criteria,
 				));
+	}
+
+	/**
+	 * Retrieves a sub category name prefixed with their parent category
+	 * @author Dan De Luca
+	 * @param int $subCatId
+	 * @return string 'CategoryName: SubCatName'
+	 */
+	public function getCatName($subCatId) {
+		$Cat = $this->model()->findByPk($subCatId);
+		$CatId = $Cat->CatId;
+		$name = Cats::model()->findByPk($CatId);
+		
+		return $name->CategoryName . ': ';
 	}
 
 }

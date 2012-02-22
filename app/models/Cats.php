@@ -56,7 +56,6 @@ class Cats extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'subCats' => array(self::HAS_MANY, 'subCats', 'CatId'),
-			'transactions' => array(self::BELONGS_TO, 'transactions', 'CatId'),
 		);
 	}
 

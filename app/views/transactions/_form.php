@@ -47,12 +47,6 @@
 	</div>
 
 	<div class="control-group">
-		<?php echo $form->labelEx($model,'CatId'); ?>
-		<?php echo $form->dropDownList($model,'CatId', CHtml::listData(Cats::model()->findAll(), 'Id', 'CategoryName')); ?>
-		<?php echo $form->error($model,'CatId'); ?>
-	</div>
-	
-	<div class="control-group">
 		<?php echo $form->labelEx($model,'SubCatId'); ?>
 		<?php echo $form->dropDownList($model,'SubCatId', CHtml::listData(SubCats::model()->findAll(), 'Id', 'SubCatName')); ?>
 		<?php echo $form->error($model,'SubCatId'); ?>

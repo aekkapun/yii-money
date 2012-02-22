@@ -11,7 +11,7 @@ $this->menu = array(
 
 Yii::app()->clientScript->registerScript('search', "
 $('.search-button').click(function(){
-	$('.search-form').toggle();
+	$('.search-form').slideToggle();
 	return false;
 });
 $('.search-form form').submit(function(){
@@ -30,7 +30,7 @@ $('.search-form form').submit(function(){
 		or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
 	</p>
 
-	<?php echo CHtml::link('Advanced Search', '#', array('class' => 'search-button')); ?>
+	<?php echo CHtml::link('Advanced Search', '#', array('class' => 'search-button btn btn-primary btn-info')); ?>
 	<div class="search-form" style="display:none">
 		<?php
 		$this->renderPartial('_search', array(
@@ -59,12 +59,8 @@ $('.search-form form').submit(function(){
 				'value' => '$data->payees->PayeeName'
 			),
 			array(
-				'name' => 'CatId',
-				'value' => '$data->cats->CategoryName'
-			),
-			array(
 				'name' => 'SubCatId',
-				'value' => '$data->subCats->SubCatName'
+				'value' => '$data->subCats->getCatName($data->SubCatId).$data->subCats->SubCatName',
 			),
 			'TransAmount',
 			array(

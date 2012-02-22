@@ -23,7 +23,6 @@ $this->menu=array(
 		'TransDate',
 		'TransType',
 		'PayeeId',
-		'CatId',
 		'TransAmount',
 		'TransId',
 		'SubCatId',

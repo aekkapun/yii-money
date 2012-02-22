@@ -9,7 +9,6 @@
  * @property string $TransDate
  * @property string $TransType
  * @property integer $PayeeId
- * @property integer $CatId
  * @property string $TransAmount
  * @property integer $TransId
  * @property integer $SubCatId
@@ -45,12 +44,12 @@ class Transactions extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('AccountId, TransDate, TransType, PayeeId, CatId, TransAmount', 'required'),
-			array('AccountId PayeeId, CatId, TransId, SubCatId', 'numerical', 'integerOnly'=>true),
+			array('AccountId, TransDate, TransType, SubCatId, PayeeId, TransAmount', 'required'),
+			array('AccountId PayeeId, TransId, SubCatId', 'numerical', 'integerOnly'=>true),
 			array('TransType, TransAmount', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('Id, AccountId, TransDate, TransType, PayeeId, CatId, TransAmount, TransId, SubCatId', 'safe', 'on'=>'search'),
+			array('Id, AccountId, TransDate, TransType, PayeeId, TransAmount, TransId, SubCatId', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -64,8 +63,7 @@ class Transactions extends CActiveRecord
 		return array(
 			'accounts' => array(self::BELONGS_TO, 'accounts', 'AccountId'),
 			'payees' => array(self::BELONGS_TO, 'payees', 'PayeeId'),
-			'cats' => array(self::BELONGS_TO, 'cats', 'CatId'),
-			'subCats' => array(self::BELONGS_TO, 'subCats', 'CatId'),
+			'subCats' => array(self::BELONGS_TO, 'subCats', 'SubCatId'),
 		);
 	}
 
@@ -80,10 +78,9 @@ class Transactions extends CActiveRecord
 			'TransDate' => 'Date',
 			'TransType' => 'Type',
 			'PayeeId' => 'Payee',
-			'CatId' => 'Category',
 			'TransAmount' => 'Amount',
 			'TransId' => 'Trans Id',
-			'SubCatId' => 'Sub Category',
+			'SubCatId' => 'Category',
 		);
 	}
 
@@ -103,7 +100,6 @@ class Transactions extends CActiveRecord
 		$criteria->compare('TransDate',$this->TransDate,true);
 		$criteria->compare('TransType',$this->TransType,true);
 		$criteria->compare('PayeeId',$this->PayeeId);
-		$criteria->compare('CatId',$this->CatId);
 		$criteria->compare('TransAmount',$this->TransAmount,true);
 		$criteria->compare('TransId',$this->TransId);
 		$criteria->compare('SubCatId',$this->SubCatId);
