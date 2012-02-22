@@ -4,6 +4,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name="language" content="en" />
 		<?php Yii::app()->controller->initCss(); ?>
+		<?php Yii::app()->controller->initJs(); ?>
 		<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 	</head>
 	<body class="<?php echo Yii::app()->controller->action->id; ?>">

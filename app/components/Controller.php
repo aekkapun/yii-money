@@ -31,4 +31,11 @@ class Controller extends CController
 			Yii::app()->clientScript->registerCssFile(Yii::app()->request->baseUrl.'/css/'.$Css.'.css', '');
 		}
 	}
+
+	public function initJs(){
+		$JsFiles = array('bootstrap-tabs');
+		foreach($JsFiles as $Js){
+			Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/js/'.$Js.'.js', '');
+		}
+	}
 }
