@@ -1,4 +1,4 @@
-<div class="well">
+<div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'transactions-form',

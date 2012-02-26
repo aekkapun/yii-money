@@ -9,7 +9,9 @@ $this->menu=array(
 	array('label'=>'Manage SubCats', 'url'=>array('admin')),
 );
 ?>
+<div class="row-fluid">
+	<h1>Create Sub Categories</h1>
+	<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+</div>
 
-<h1>Create Sub Categories</h1>
 
-<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

@@ -9,26 +9,26 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<div class="row">
+	<div class="control-group">
 		<?php echo $form->labelEx($model,'AccTypeId'); ?>
 		<?php echo $form->dropDownList($model,'AccTypeId', CHtml::listData(AccType::model()->findAll(), 'Id', 'AccTypeName')); ?>
 		<?php echo $form->error($model,'AccTypeId'); ?>
 	</div>
 
-	<div class="row">
+	<div class="control-group">
 		<?php echo $form->labelEx($model,'AccName'); ?>
 		<?php echo $form->textField($model,'AccName',array('size'=>50,'maxlength'=>50)); ?>
 		<?php echo $form->error($model,'AccName'); ?>
 	</div>
 
-	<div class="row">
+	<div class="control-group">
 		<?php echo $form->labelEx($model,'OverDraftLimit'); ?>
 		<?php echo $form->textField($model,'OverDraftLimit'); ?>
 		<?php echo $form->error($model,'OverDraftLimit'); ?>
 	</div>
 
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+	<div class="control-group">
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('class' => 'btn btn-primary')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

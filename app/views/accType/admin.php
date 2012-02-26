@@ -1,17 +1,17 @@
 <?php
-$this->breadcrumbs=array(
-	'Acc Types'=>array('index'),
+$this->breadcrumbs = array(
+	'Acc Types' => array('index'),
 	'Manage',
 );
 
-$this->menu=array(
-	array('label'=>'List AccType', 'url'=>array('index')),
-	array('label'=>'Create AccType', 'url'=>array('create')),
+$this->menu = array(
+	array('label' => 'List AccType', 'url' => array('index')),
+	array('label' => 'Create AccType', 'url' => array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
 $('.search-button').click(function(){
-	$('.search-form').toggle();
+	$('.search-form').slideToggle();
 	return false;
 });
 $('.search-form form').submit(function(){
@@ -23,28 +23,33 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Account Types</h1>
+<div class="row-fluid">
+	<h1>Manage Account Types</h1>
+	<?php echo CHtml::link('Advanced Search', '#', array('class' => 'search-button btn btn-primary btn-info')); ?>
+	<div class="search-form" style="display:none">
+		<?php
+		$this->renderPartial('_search', array(
+			'model' => $model,
+		));
+		?>
+	</div><!-- search-form -->
+</div>
 
-<p>
-You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
-or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
-</p>
-
-<?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
-<div class="search-form" style="display:none">
-<?php $this->renderPartial('_search',array(
-	'model'=>$model,
-)); ?>
-</div><!-- search-form -->
-
-<?php $this->widget('zii.widgets.grid.CGridView', array(
-	'id'=>'acc-type-grid',
-	'dataProvider'=>$model->search(),
-	'filter'=>$model,
-	'columns'=>array(
-		'AccTypeName',
-		array(
-			'class'=>'CButtonColumn',
+<div class="row-fluid">
+	<?php
+	$this->widget('zii.widgets.grid.CGridView', array(
+		'id' => 'acc-type-grid',
+		'dataProvider' => $model->search(),
+		'filter' => $model,
+		'columns' => array(
+			'AccTypeName',
+			array(
+				'class' => 'CButtonColumn',
+				'deleteButtonImageUrl' => Yii::app()->baseUrl.'/images/form-reset.png',
+				'updateButtonImageUrl' => Yii::app()->baseUrl.'/images/form-edit.png',
+				'viewButtonImageUrl' => Yii::app()->baseUrl.'/images/form-submit.png',
+			),
 		),
-	),
-)); ?>
+	));
+	?>	
+</div>

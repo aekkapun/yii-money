@@ -12,6 +12,10 @@ body {
     padding-top: 60px;
 }
 
+.search-button{
+	margin-top: 10px;
+}
+
 span.required{color:#ff0000;}
 
 /** Headings **/
@@ -20,7 +24,19 @@ h1 {font-size: 24px;line-height: 36px;}
 /** Grids **/
 .grid-view table.items th {background: none repeat scroll 0 0 #666666;}
 .grid-view .filters input, .grid-view .filters select {border: 1px solid #CCCCCC;width: 93%;}
-
+.grid-view table.items tr:hover{background:#49AFCD;color:#fff;}
+.grid-view table.items tr.selected{background:#49AFCD;color:#fff;}
 
 ul.yiiPager a:link, ul.yiiPager a:visited {color: #0E509E;font-weight: bold;padding: 5px 14px;text-decoration: none;display: inline-block;border-radius: 15px 15px 15px 15px;border: 1px solid #DDDDDD;background-color: #FFFFFF;}
 .summary{font-family: Lucida Grande;font-style: italic;font-weight: bold;}
+
+
+.form{overflow: hidden;width:550px}
+.form .control-group{width:270px;height:80px;float: left;}
+.form .control-group.buttons{padding:13px 25px 0 0;width:245px;height:67px;}
+
+.search-form{padding-top: 15px;}
+
+.grid-view .button-column {
+    width: 75px;
+}

@@ -10,6 +10,9 @@ $this->menu=array(
 );
 ?>
 
-<h1>Create Accounts</h1>
+<div class="row-fluid">
+	<h1>Create Accounts</h1>
+	<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+</div>
 
-<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+

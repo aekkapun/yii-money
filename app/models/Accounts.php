@@ -70,7 +70,7 @@ class Accounts extends CActiveRecord
 			'Id' => 'ID',
 			'AccName' => 'Account Name',
 			'AccTypeId' => 'Account Type',
-			'OverDraftLimit' => 'Overdraft Limit',
+			'OverDraftLimit' => 'Limit',
 		);
 	}
 

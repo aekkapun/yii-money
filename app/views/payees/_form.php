@@ -9,14 +9,14 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<div class="row">
+	<div class="control-group">
 		<?php echo $form->labelEx($model,'PayeeName'); ?>
 		<?php echo $form->textField($model,'PayeeName',array('size'=>60,'maxlength'=>200)); ?>
 		<?php echo $form->error($model,'PayeeName'); ?>
 	</div>
 
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+	<div class="control-group buttons">
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('class' => 'btn btn-primary')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
