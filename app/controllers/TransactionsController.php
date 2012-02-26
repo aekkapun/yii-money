@@ -59,22 +59,23 @@ class TransactionsController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate()
-	{
-		$model=new Transactions;
+	public function actionCreate() {
+		$model = new Transactions;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Transactions']))
-		{
-			$model->attributes=$_POST['Transactions'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->Id));
+		if (isset($_POST['Transactions'])) {
+			if ($_POST['Transactions']['TransType'] == 'Withdrawal') {
+				$_POST['Transactions']['TransAmount'] = - $_POST['Transactions']['TransAmount'];
+			}
+			$model->attributes = $_POST['Transactions'];
+			if ($model->save())
+				$this->redirect(array('view', 'id' => $model->Id));
 		}
 
-		$this->render('create',array(
-			'model'=>$model,
+		$this->render('create', array(
+			'model' => $model,
 		));
 	}
 
@@ -83,22 +84,23 @@ class TransactionsController extends Controller
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
 	 */
-	public function actionUpdate($id)
-	{
-		$model=$this->loadModel($id);
+	public function actionUpdate($id) {
+		$model = $this->loadModel($id);
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Transactions']))
-		{
-			$model->attributes=$_POST['Transactions'];
-			if($model->save())
+		if (isset($_POST['Transactions'])) {
+			if ($_POST['Transactions']['TransType'] == 'Withdrawal') {
+				$_POST['Transactions']['TransAmount'] = - $_POST['Transactions']['TransAmount'];
+			}
+			$model->attributes = $_POST['Transactions'];
+			if ($model->save())
 				$this->redirect(array('admin'));
 		}
 
-		$this->render('update',array(
-			'model'=>$model,
+		$this->render('update', array(
+			'model' => $model,
 		));
 	}
 

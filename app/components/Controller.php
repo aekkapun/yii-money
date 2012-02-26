@@ -23,7 +23,7 @@ class Controller extends CController
 	
 	
 	/**
-	 * trying to load style sheets after yii assets DDL
+	 * trying to load style sheets after yii assets
 	 */
 	public function initCSS(){
 		$CssFiles = array('bootstrap','bootstrap-responsive','yii-money');

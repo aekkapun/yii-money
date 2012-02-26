@@ -11,9 +11,6 @@ body {
     padding-bottom: 40px;
     padding-top: 60px;
 }
-.sidebar-nav {
-    padding: 9px 0;
-}
 
 span.required{color:#ff0000;}
 
@@ -27,7 +24,3 @@ h1 {font-size: 24px;line-height: 36px;}
 
 ul.yiiPager a:link, ul.yiiPager a:visited {color: #0E509E;font-weight: bold;padding: 5px 14px;text-decoration: none;display: inline-block;border-radius: 15px 15px 15px 15px;border: 1px solid #DDDDDD;background-color: #FFFFFF;}
 .summary{font-family: Lucida Grande;font-style: italic;font-weight: bold;}
-
-
-
-footer{text-align: center;}

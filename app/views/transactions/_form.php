@@ -14,6 +14,8 @@
 		<?php
 		$this->widget('zii.widgets.jui.CJuiDatePicker', array(
 			'model'=>$model,
+			'themeUrl'=>Yii::app()->baseUrl.'/css/jui-themes',
+			'theme'=>'cupertino',
 			'attribute' => 'TransDate',
 			'options' => array(
 				'showAnim' => 'fold',
@@ -59,12 +61,6 @@
 	</div>
 
 	<div class="control-group">
-		<?php echo $form->labelEx($model,'TransId'); ?>
-		<?php echo $form->textField($model,'TransId'); ?>
-		<?php echo $form->error($model,'TransId'); ?>
-	</div>
-
-	<div class="form-actions">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('class' => 'btn btn-primary')); ?>
 	</div>
 

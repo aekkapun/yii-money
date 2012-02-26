@@ -23,7 +23,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<div class="well">
+<div class="row-fluid">
 	<h1>Manage Transactions</h1>
 	<p>
 		You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
@@ -62,7 +62,11 @@ $('.search-form form').submit(function(){
 				'name' => 'SubCatId',
 				'value' => '$data->subCats->getCatName($data->SubCatId).$data->subCats->SubCatName',
 			),
-			'TransAmount',
+			array(
+				'name' => 'TransAmount',
+				'value'=> 'Yii::app()->numberFormatter->formatCurrency($data->TransAmount,Yii::app()->params->currency)',
+
+			),
 			array(
 				'class' => 'CButtonColumn',
 			),

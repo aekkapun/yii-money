@@ -86,5 +86,6 @@ return array(
 	'params'=>array(
 		// this is used in contact page
 		'adminEmail'=>'dan.deluca@newicon.net',
+		'currency'=>'GBP',
 	),
 );

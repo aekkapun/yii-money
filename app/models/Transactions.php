@@ -109,6 +109,10 @@ class Transactions extends CActiveRecord
 		));
 	}
 	
+	/**
+	 * Date format function
+	 * @return int transaction date 
+	 */
 	public function getTransDateInt(){
 		return strtotime($this->TransDate);
 	}
@@ -116,4 +120,7 @@ class Transactions extends CActiveRecord
 	public function displayTransDate($format="M j, Y"){
 		return date($format, $this->transDateInt);
 	}
+	
+
+	
 }

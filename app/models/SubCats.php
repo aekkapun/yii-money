@@ -92,7 +92,7 @@ class SubCats extends CActiveRecord {
 	}
 
 	/**
-	 * Retrieves a sub category name prefixed with their parent category
+	 * Retrieves a category name belonging to a sub category id passed into it.
 	 * @author Dan De Luca
 	 * @param int $subCatId
 	 * @return string 'CategoryName: SubCatName'
