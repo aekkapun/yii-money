@@ -84,7 +84,6 @@ return array(
 	// application-level parameters that can be accessed
 	// using Yii::app()->params['adminEmail']
 	'params'=>array(
-		// this is used in contact page
 		'adminEmail'=>'dan.deluca@newicon.net',
 		'currency'=>'GBP',
 	),
