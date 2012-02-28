@@ -25,15 +25,15 @@ Yii::app()->clientScript->registerScript('tabs', "
     <div class="tab-content">
 		<div class="tab-pane active" id="withdrawal">
 			<h3>Withdrawal</h3>
-			<?php echo $this->renderPartial('_form', array('model' => $model)); ?>	
+			<?php echo $this->renderPartial('_form_withdrawal', array('model' => $model)); ?>	
 		</div>
 		<div class="tab-pane" id="deposit">
 			<h3>Deposit</h3>
-			<?php echo $this->renderPartial('_form', array('model' => $model)); ?>	
+			<?php echo $this->renderPartial('_form_deposit', array('model' => $model)); ?>	
 		</div>
 		<div class="tab-pane" id="transfer">
 			<h3>Transfer</h3>
-			<?php echo $this->renderPartial('_form', array('model' => $model)); ?>	
+			<?php echo $this->renderPartial('_form_transfer', array('model' => $model)); ?>	
 		</div>
     </div>
 </div>

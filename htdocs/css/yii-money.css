@@ -19,7 +19,17 @@ body {
 span.required{color:#ff0000;}
 
 /** Headings **/
-h1 {font-size: 24px;line-height: 36px;}
+h1 {
+    font-size: 21px;
+    line-height: 25px;
+    margin: 0 0 10px;
+}
+
+h3 {
+    font-size: 19px;
+    line-height: 22px;
+    margin: 0 0 10px;
+}
 
 /** Grids **/
 .grid-view table.items th {background: none repeat scroll 0 0 #666666;}
