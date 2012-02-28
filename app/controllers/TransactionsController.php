@@ -71,7 +71,7 @@ class TransactionsController extends Controller
 			}
 			$model->attributes = $_POST['Transactions'];
 			if ($model->save())
-				$this->redirect(array('admin'));
+				$this->redirect(array('view', 'id' => $model->Id));
 		}
 
 		$this->render('create', array(

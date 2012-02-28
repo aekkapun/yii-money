@@ -34,7 +34,6 @@ Yii::app()->clientScript->registerScript('search', "
 		?>
 	</div><!-- search-form -->
 </div>
-
 <div class="row-fluid">
 	<?php
 	$this->widget('zii.widgets.grid.CGridView', array(
