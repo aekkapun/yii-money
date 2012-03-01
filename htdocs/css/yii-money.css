@@ -41,3 +41,5 @@ ul.yiiPager a:link, ul.yiiPager a:visited {color: #0E509E;font-weight: bold;padd
 .tab-content form{margin:0px;}
 .nav.nav-tabs{margin: 0px;}
 .tab-pane{border-radius:0 4px 4px 4px;padding:10px;border-bottom: 1px solid #DDDDDD;border-left: 1px solid #DDDDDD;border-right: 1px solid #DDDDDD}
+
+.form-tabs{width: 835px;}
