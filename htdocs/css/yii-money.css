@@ -35,7 +35,7 @@ ul.yiiPager a:link, ul.yiiPager a:visited {color: #0E509E;font-weight: bold;padd
 .summary{font-family: Lucida Grande;font-style: italic;font-weight: bold;}
 
 
-.form{overflow: hidden;width:550px}
+.form{overflow: hidden;}
 .form .control-group{width:270px;height:80px;float: left;}
 .form .control-group.buttons{padding:13px 25px 0 0;width:245px;height:67px;}
 
