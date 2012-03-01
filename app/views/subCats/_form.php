@@ -27,7 +27,7 @@
 		<?php echo $form->error($model,'SubCatName'); ?>
 	</div>
 
-	<div class="control-group">
+	<div class="control-group wide">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save',array('class' => 'btn btn-primary')); ?>
 	</div>
 

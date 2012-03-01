@@ -10,9 +10,7 @@ $this->menu = array(
 );
 
 Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/js/bootstrap-tabs.js', CClientScript::POS_HEAD);
-Yii::app()->clientScript->registerScript('tabs', "
 
-");
 ?>
 
 <div class="row-fluid">

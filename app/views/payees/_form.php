@@ -15,7 +15,7 @@
 		<?php echo $form->error($model,'PayeeName'); ?>
 	</div>
 
-	<div class="control-group buttons">
+	<div class="control-group wide">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('class' => 'btn btn-primary')); ?>
 	</div>
 
