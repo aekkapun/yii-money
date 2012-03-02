@@ -60,22 +60,25 @@ class TransactionsController extends Controller
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
 	public function actionCreate() {
-		$model = new Transactions;
+		
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-
-		if (isset($_POST['Transactions'])) {
-			if ($_POST['Transactions']['TransType'] == 'Withdrawal') {
-				$_POST['Transactions']['TransAmount'] = - $_POST['Transactions']['TransAmount'];
-			}
-			$model->attributes = $_POST['Transactions'];
+		
+		$model = new stdClass();
+		
+		if(isset($_POST['type'])){
+			$modelName = $_POST['type'];
+			$model = new $modelType();
+			$model->attributes = $_POST[$modelType];
 			if ($model->save())
 				$this->redirect(array('admin'));
 		}
-
+		
 		$this->render('create', array(
-			'model' => $model,
+			'deposit'=>(get_class($model)=='Deposit')?$model:new Deposit,
+			'transfer'=>(get_class($model)=='Transfer')?$model:new Transfer,
+			'withdrawal'=>(get_class($model)=='Withdrawal')?$model:new Withdrawal
 		));
 	}
 
@@ -90,17 +93,18 @@ class TransactionsController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if (isset($_POST['Transactions'])) {
-			if ($_POST['Transactions']['TransType'] == 'Withdrawal') {
-				$_POST['Transactions']['TransAmount'] = - $_POST['Transactions']['TransAmount'];
-			}
-			$model->attributes = $_POST['Transactions'];
+		if(isset($_POST['type'])){
+			$modelName = $_POST['type'];
+			$model = new $modelType();
+			$model->attributes = $_POST[$modelType];
 			if ($model->save())
 				$this->redirect(array('admin'));
 		}
-
-		$this->render('update', array(
-			'model' => $model,
+		
+		$this->render('create', array(
+			'deposit'=>(get_class($model)=='Deposit')?$model:new Deposit,
+			'transfer'=>(get_class($model)=='Transfer')?$model:new Transfer,
+			'withdrawal'=>(get_class($model)=='Withdrawal')?$model:new Withdrawal
 		));
 	}
 

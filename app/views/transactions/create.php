@@ -24,15 +24,15 @@ Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/js/bootstra
 		<div class="tab-content">
 			<div class="tab-pane active" id="withdrawal">
 				<h3>Withdrawal</h3>
-				<?php echo $this->renderPartial('_form', array('model' => $model)); ?>	
+				<?php echo $this->renderPartial('_form', array('model' => $withdrawal)); ?>	
 			</div>
 			<div class="tab-pane" id="deposit">
 				<h3>Deposit</h3>
-				<?php echo $this->renderPartial('_form', array('model' => $model)); ?>	
+				<?php echo $this->renderPartial('_form', array('model' => $deposit)); ?>	
 			</div>
 			<div class="tab-pane" id="transfer">
 				<h3>Transfer</h3>
-				<?php echo $this->renderPartial('_form', array('model' => $model)); ?>	
+				<?php echo $this->renderPartial('_form', array('model' => $transfer)); ?>	
 			</div>
 		</div>		
 	</div>

@@ -37,12 +37,6 @@
 	</div>
 
 	<div class="control-group">
-		<?php echo $form->labelEx($model,'TransType'); ?>
-		<?php echo $form->dropDownList($model,'TransType',array('Withdrawal'=>'Withdrawal','Deposit'=>'Deposit','Transfer'=>'Transfer')); ?>
-		<?php echo $form->error($model,'TransType'); ?>
-	</div>
-
-	<div class="control-group">
 		<?php echo $form->labelEx($model,'PayeeId'); ?>
 		<?php echo $form->dropDownList($model,'PayeeId', CHtml::listData(Payees::model()->findAll(), 'Id', 'PayeeName')); ?>
 		<?php echo $form->error($model,'PayeeId'); ?>
@@ -63,7 +57,7 @@
 	<div class="control-group wide">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('class' => 'btn btn-primary')); ?>
 	</div>
-
+	<?php CHtml::hiddenField('type', get_class($model)); ?>
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
