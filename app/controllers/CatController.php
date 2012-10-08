@@ -1,6 +1,6 @@
 <?php
 
-class AccountsController extends Controller
+class CatController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -61,14 +61,14 @@ class AccountsController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Accounts;
+		$model=new Cat;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Accounts']))
+		if(isset($_POST['Cat']))
 		{
-			$model->attributes=$_POST['Accounts'];
+			$model->attributes=$_POST['Cat'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->Id));
 		}
@@ -90,9 +90,9 @@ class AccountsController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Accounts']))
+		if(isset($_POST['Cat']))
 		{
-			$model->attributes=$_POST['Accounts'];
+			$model->attributes=$_POST['Cat'];
 			if($model->save())
 				$this->redirect(array('admin'));
 		}
@@ -127,7 +127,7 @@ class AccountsController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Accounts');
+		$dataProvider=new CActiveDataProvider('Cat');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -138,10 +138,10 @@ class AccountsController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Accounts('search');
+		$model=new Cat('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Accounts']))
-			$model->attributes=$_GET['Accounts'];
+		if(isset($_GET['Cat']))
+			$model->attributes=$_GET['Cat'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -155,7 +155,7 @@ class AccountsController extends Controller
 	 */
 	public function loadModel($id)
 	{
-		$model=Accounts::model()->findByPk($id);
+		$model=Cat::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -167,7 +167,7 @@ class AccountsController extends Controller
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='accounts-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='cats-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

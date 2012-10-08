@@ -4,8 +4,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Create SubCats', 'url'=>array('create')),
-	array('label'=>'Manage SubCats', 'url'=>array('admin')),
+	array('label'=>'Create subCat', 'url'=>array('create')),
+	array('label'=>'Manage subCat', 'url'=>array('admin')),
 );
 ?>
 

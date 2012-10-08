@@ -1,6 +1,6 @@
 <?php
 
-class PayeesController extends Controller
+class TransactionController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -59,22 +59,23 @@ class PayeesController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate()
-	{
-		$model=new Payees;
+	public function actionCreate() {
+		$model = new Transaction;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Payees']))
-		{
-			$model->attributes=$_POST['Payees'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->Id));
+		if (isset($_POST['Transaction'])) {
+			if ($_POST['Transaction']['TransType'] == 'Withdrawal') {
+				$_POST['Transaction']['TransAmount'] = - $_POST['Transaction']['TransAmount'];
+			}
+			$model->attributes = $_POST['Transaction'];
+			if ($model->save())
+				$this->redirect(array('admin'));
 		}
 
-		$this->render('create',array(
-			'model'=>$model,
+		$this->render('create', array(
+			'model' => $model,
 		));
 	}
 
@@ -83,22 +84,23 @@ class PayeesController extends Controller
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
 	 */
-	public function actionUpdate($id)
-	{
-		$model=$this->loadModel($id);
+	public function actionUpdate($id) {
+		$model = $this->loadModel($id);
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Payees']))
-		{
-			$model->attributes=$_POST['Payees'];
-			if($model->save())
+		if (isset($_POST['Transaction'])) {
+			if ($_POST['Transaction']['TransType'] == 'Withdrawal') {
+				$_POST['Transaction']['TransAmount'] = - $_POST['Transaction']['TransAmount'];
+			}
+			$model->attributes = $_POST['Transaction'];
+			if ($model->save())
 				$this->redirect(array('admin'));
 		}
 
-		$this->render('update',array(
-			'model'=>$model,
+		$this->render('update', array(
+			'model' => $model,
 		));
 	}
 
@@ -127,7 +129,7 @@ class PayeesController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Payees');
+		$dataProvider=new CActiveDataProvider('Transaction');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -138,10 +140,10 @@ class PayeesController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Payees('search');
+		$model=new Transaction('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Payees']))
-			$model->attributes=$_GET['Payees'];
+		if(isset($_GET['Transaction']))
+			$model->attributes=$_GET['Transaction'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -155,7 +157,7 @@ class PayeesController extends Controller
 	 */
 	public function loadModel($id)
 	{
-		$model=Payees::model()->findByPk($id);
+		$model=Transaction::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -167,7 +169,7 @@ class PayeesController extends Controller
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='payees-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='transactions-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

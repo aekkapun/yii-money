@@ -16,7 +16,6 @@ return array(
 	// autoloading model and component classes
 	'import'=>array(
 		'application.models.*',
-		'application.models.transactions.*',
 		'application.components.*',
 		'application.controllers.*',
 	),

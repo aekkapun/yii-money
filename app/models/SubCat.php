@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model class for table "SubCats".
+ * This is the model class for table "SubCat".
  *
- * The followings are the available columns in table 'SubCats':
+ * The followings are the available columns in table 'SubCat':
  * @property integer $Id
  * @property integer $CatId
  * @property string $SubCatName
@@ -12,12 +12,12 @@
  * The followings are the available model relations:
  * @property Cats $cat
  */
-class SubCats extends CActiveRecord {
+class SubCat extends CActiveRecord {
 
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return SubCats the static model class
+	 * @return SubCat the static model class
 	 */
 	public static function model($className=__CLASS__) {
 		return parent::model($className);
@@ -27,7 +27,7 @@ class SubCats extends CActiveRecord {
 	 * @return string the associated database table name
 	 */
 	public function tableName() {
-		return 'SubCats';
+		return 'SubCat';
 	}
 
 	/**
@@ -54,7 +54,8 @@ class SubCats extends CActiveRecord {
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'cats' => array(self::BELONGS_TO, 'cats', 'CatId'),
+			'relCat' => array(self::BELONGS_TO, 'Cat', 'CatId'),
+			'relTransaction' => array(self::HAS_MANY, 'Transaction', 'SubCatName'),
 		);
 	}
 
@@ -85,6 +86,7 @@ class SubCats extends CActiveRecord {
 		$criteria->compare('CatId', $this->CatId);
 		$criteria->compare('SubCatName', $this->SubCatName, true);
 		$criteria->compare('CatType', $this->CatType, true);
+		$criteria->order = 'CatId';
 
 		return new CActiveDataProvider($this, array(
 					'criteria' => $criteria,
@@ -98,9 +100,8 @@ class SubCats extends CActiveRecord {
 	 * @return string 'CategoryName: SubCatName'
 	 */
 	public function getCatName($subCatId) {
-		$Cat = $this->model()->findByPk($subCatId);
-		$CatId = $Cat->CatId;
-		$name = Cats::model()->findByPk($CatId);
+		$cat = $this->model()->findByPk($subCatId);
+		$name = Cat::model()->findByPk($cat->CatId);
 		
 		return $name->CategoryName . ': ';
 	}

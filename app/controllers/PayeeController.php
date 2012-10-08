@@ -1,6 +1,6 @@
 <?php
 
-class CatsController extends Controller
+class PayeeController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -61,14 +61,14 @@ class CatsController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Cats;
+		$model=new Payee;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Cats']))
+		if(isset($_POST['Payee']))
 		{
-			$model->attributes=$_POST['Cats'];
+			$model->attributes=$_POST['Payee'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->Id));
 		}
@@ -90,9 +90,9 @@ class CatsController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Cats']))
+		if(isset($_POST['Payee']))
 		{
-			$model->attributes=$_POST['Cats'];
+			$model->attributes=$_POST['Payee'];
 			if($model->save())
 				$this->redirect(array('admin'));
 		}
@@ -127,7 +127,7 @@ class CatsController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Cats');
+		$dataProvider=new CActiveDataProvider('Payee');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -138,10 +138,10 @@ class CatsController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Cats('search');
+		$model=new Payee('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Cats']))
-			$model->attributes=$_GET['Cats'];
+		if(isset($_GET['Payee']))
+			$model->attributes=$_GET['Payee'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -155,7 +155,7 @@ class CatsController extends Controller
 	 */
 	public function loadModel($id)
 	{
-		$model=Cats::model()->findByPk($id);
+		$model=Payee::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -167,7 +167,7 @@ class CatsController extends Controller
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='cats-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='payees-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

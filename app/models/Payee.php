@@ -1,18 +1,18 @@
 <?php
 
 /**
- * This is the model class for table "Payees".
+ * This is the model class for table "Payee".
  *
- * The followings are the available columns in table 'Payees':
+ * The followings are the available columns in table 'Payee':
  * @property integer $Id
  * @property string $PayeeName
  */
-class Payees extends CActiveRecord
+class Payee extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return Payees the static model class
+	 * @return Payee the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -24,7 +24,7 @@ class Payees extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'Payees';
+		return 'Payee';
 	}
 
 	/**
@@ -51,7 +51,7 @@ class Payees extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'transactions' => array(self::BELONGS_TO, 'transactions', 'PayeeId'),
+			'relTransaction' => array(self::HAS_MANY, 'Transaction', 'PayeeName'),
 		);
 	}
 

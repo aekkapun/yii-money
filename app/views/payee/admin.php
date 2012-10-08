@@ -1,12 +1,12 @@
 <?php
 $this->breadcrumbs = array(
-	'Sub Cats' => array('index'),
+	'Payees' => array('index'),
 	'Manage',
 );
 
 $this->menu = array(
-	array('label' => 'List SubCats', 'url' => array('index')),
-	array('label' => 'Create SubCats', 'url' => array('create')),
+	array('label' => 'List Payees', 'url' => array('index')),
+	array('label' => 'Create Payees', 'url' => array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -15,7 +15,7 @@ $('.search-button').click(function(){
 	return false;
 });
 $('.search-form form').submit(function(){
-	$.fn.yiiGridView.update('sub-cats-grid', {
+	$.fn.yiiGridView.update('payee-grid', {
 		data: $(this).serialize()
 	});
 	return false;
@@ -24,7 +24,7 @@ $('.search-form form').submit(function(){
 ?>
 
 <div class="row-fluid">
-	<h1>Manage Sub Categories</h1>
+	<h1>Manage Payees</h1>
 	<?php echo CHtml::link('Advanced Search', '#', array('class' => 'search-button btn btn-primary btn-info')); ?>
 	<div class="search-form" style="display:none">
 		<?php
@@ -32,29 +32,26 @@ $('.search-form form').submit(function(){
 			'model' => $model,
 		));
 		?>
-	</div><!-- search-form -->
+	</div><!-- search-form -->	
 </div>
+
+
 
 <div class="row-fluid">
 	<?php
 	$this->widget('zii.widgets.grid.CGridView', array(
-		'id' => 'sub-cats-grid',
+		'id' => 'payee-grid',
 		'dataProvider' => $model->search(),
 		'filter' => $model,
 		'columns' => array(
-			array(
-				'name' => 'CatId',
-				'value' => '$data->cats->CategoryName',
-			),
-			'SubCatName',
-			'CatType',
+			'PayeeName',
 			array(
 				'class' => 'CButtonColumn',
 				'deleteButtonImageUrl' => Yii::app()->baseUrl.'/images/form-reset.png',
 				'updateButtonImageUrl' => Yii::app()->baseUrl.'/images/form-edit.png',
 				'viewButtonImageUrl' => Yii::app()->baseUrl.'/images/form-submit.png',
-			)
-		)
+			),
+		),
 	));
-	?>	
+	?>
 </div>

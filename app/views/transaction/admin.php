@@ -44,7 +44,7 @@ Yii::app()->clientScript->registerScript('search', "
 		'columns' => array(
 			array(
 				'name' => 'AccountId',
-				'value' => '$data->accounts->AccName'
+				'value' => '$data->relAccount->AccName'
 			), array(
 				'name' => 'TransDate',
 				'value' => 'date("M j, Y", $data->transDateInt)',
@@ -52,11 +52,11 @@ Yii::app()->clientScript->registerScript('search', "
 			'TransType',
 			array(
 				'name' => 'PayeeId',
-				'value' => '$data->payees->PayeeName'
+				'value' => '$data->relPayee->PayeeName',
 			),
 			array(
 				'name' => 'SubCatId',
-				'value' => '$data->subCats->getCatName($data->SubCatId).$data->subCats->SubCatName',
+				'value' => '$data->relSubCat->getCatName($data->SubCatId).$data->relSubCat->SubCatName',
 			),
 			array(
 				'name' => 'TransAmount',

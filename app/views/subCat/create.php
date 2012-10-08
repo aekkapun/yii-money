@@ -5,8 +5,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List SubCats', 'url'=>array('index')),
-	array('label'=>'Manage SubCats', 'url'=>array('admin')),
+	array('label'=>'List subCat', 'url'=>array('index')),
+	array('label'=>'Manage subCat', 'url'=>array('admin')),
 );
 ?>
 <div class="row-fluid">

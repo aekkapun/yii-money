@@ -1,7 +1,7 @@
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'transactions-form',
+	'id'=>'transactions-form-d',
 	'enableAjaxValidation'=>false,
 )); ?>
 
@@ -22,6 +22,7 @@
 				'dateFormat' => 'yy-mm-dd',
 			),
 			'htmlOptions' => array(
+				'id'=> 'date-d',
 				'style' => 'height:20px;'
 			),
 		));
@@ -32,19 +33,19 @@
 	
 	<div class="control-group">
 		<?php echo $form->labelEx($model,'AccountId'); ?>
-		<?php echo $form->dropDownList($model,'AccountId', CHtml::listData(Accounts::model()->findAll(), 'Id', 'AccName')); ?>
+		<?php echo $form->dropDownList($model,'AccountId', CHtml::listData(Account::model()->findAll(), 'Id', 'AccName')); ?>
 		<?php echo $form->error($model,'AccountId'); ?>
 	</div>
 
 	<div class="control-group">
 		<?php echo $form->labelEx($model,'PayeeId'); ?>
-		<?php echo $form->dropDownList($model,'PayeeId', CHtml::listData(Payees::model()->findAll(), 'Id', 'PayeeName')); ?>
+		<?php echo $form->dropDownList($model,'PayeeId', CHtml::listData(Payee::model()->findAll(), 'Id', 'PayeeName')); ?>
 		<?php echo $form->error($model,'PayeeId'); ?>
 	</div>
 
 	<div class="control-group">
 		<?php echo $form->labelEx($model,'SubCatId'); ?>
-		<?php echo $form->dropDownList($model,'SubCatId', CHtml::listData(SubCats::model()->findAll(), 'Id', 'SubCatName')); ?>
+		<?php echo $form->dropDownList($model,'SubCatId', CHtml::listData(subCat::model()->findAll(), 'Id', 'SubCatName')); ?>
 		<?php echo $form->error($model,'SubCatId'); ?>
 	</div>
 	
@@ -55,9 +56,10 @@
 	</div>
 
 	<div class="control-group wide">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('class' => 'btn btn-primary')); ?>
+		<?php echo $form->hiddenField($model,'TransType',array('value'=>'Deposit')); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Save Deposit' : 'Save', array('class' => 'btn btn-primary')); ?>
 	</div>
-	<?php CHtml::hiddenField('type', get_class($model)); ?>
+
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->

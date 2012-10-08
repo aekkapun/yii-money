@@ -18,11 +18,11 @@
 						$this->widget('zii.widgets.CMenu', array(
 							'htmlOptions' => array('class' => 'nav'),
 							'items' => array(
-								array('label' => 'Transactions', 'url' => array('/transactions/admin')),
-								array('label' => 'Payees', 'url' => array('/payees/admin')),
-								array('label' => 'Categories', 'url' => array('/cats/admin')),
-								array('label' => 'Sub Categories', 'url' => array('/subcats/admin')),
-								array('label' => 'Accounts', 'url' => array('/accounts/admin')),
+								array('label' => 'Transactions', 'url' => array('/transaction/admin')),
+								array('label' => 'Payees', 'url' => array('/payee/admin')),
+								array('label' => 'Categories', 'url' => array('/cat/admin')),
+								array('label' => 'Sub Categories', 'url' => array('/subcat/admin')),
+								array('label' => 'Accounts', 'url' => array('/account/admin')),
 								array('label' => 'Account Types', 'url' => array('/acctype/admin')),
 								array('label' => 'Login', 'url' => array('/admin/login'), 'visible' => Yii::app()->user->isGuest),
 								array('label' => 'Logout (' . Yii::app()->user->name . ')', 'url' => array('/admin/logout'), 'visible' => !Yii::app()->user->isGuest)

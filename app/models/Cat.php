@@ -1,23 +1,22 @@
 <?php
 
 /**
- * This is the model class for table "Accounts".
+ * This is the model class for table "Cat".
  *
- * The followings are the available columns in table 'Accounts':
+ * The followings are the available columns in table 'Cat':
  * @property integer $Id
- * @property string $AccName
- * @property integer $AccTypeId
- * @property integer $OverDraftLimit
+ * @property string $CategoryName
+ * @property string $CatType
  *
  * The followings are the available model relations:
- * @property AccType $accType
+ * @property SubCat[] $subCat
  */
-class Accounts extends CActiveRecord
+class Cat extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return Accounts the static model class
+	 * @return Cat the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -29,7 +28,7 @@ class Accounts extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'Accounts';
+		return 'Cat';
 	}
 
 	/**
@@ -40,12 +39,11 @@ class Accounts extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('AccTypeId, OverDraftLimit', 'required'),
-			array('AccTypeId, OverDraftLimit', 'numerical', 'integerOnly'=>true),
-			array('AccName', 'length', 'max'=>50),
+			array('CategoryName', 'length', 'max'=>50),
+			array('CatType', 'length', 'max'=>7),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('Id, AccName, AccTypeId, OverDraftLimit', 'safe', 'on'=>'search'),
+			array('Id, CategoryName, CatType', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -57,7 +55,8 @@ class Accounts extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'accType' => array(self::BELONGS_TO, 'AccType', 'AccTypeId'),
+			'relSubCat' => array(self::HAS_MANY, 'SubCat', 'CatId'),
+			'relTransaction' => array(self::HAS_MANY, 'Transaction', 'SubCatName'),
 		);
 	}
 
@@ -68,9 +67,8 @@ class Accounts extends CActiveRecord
 	{
 		return array(
 			'Id' => 'ID',
-			'AccName' => 'Account Name',
-			'AccTypeId' => 'Account Type',
-			'OverDraftLimit' => 'Limit',
+			'CategoryName' => 'Category Name',
+			'CatType' => 'Category Type',
 		);
 	}
 
@@ -86,9 +84,8 @@ class Accounts extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('Id',$this->Id);
-		$criteria->compare('AccName',$this->AccName,true);
-		$criteria->compare('AccTypeId',$this->AccTypeId);
-		$criteria->compare('OverDraftLimit',$this->OverDraftLimit);
+		$criteria->compare('CategoryName',$this->CategoryName,true);
+		$criteria->compare('CatType',$this->CatType,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

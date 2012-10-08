@@ -15,7 +15,7 @@ $('.search-button').click(function(){
 	return false;
 });
 $('.search-form form').submit(function(){
-	$.fn.yiiGridView.update('cats-grid', {
+	$.fn.yiiGridView.update('cat-grid', {
 		data: $(this).serialize()
 	});
 	return false;
@@ -37,7 +37,7 @@ $('.search-form form').submit(function(){
 <div class="row-fluid">
 	<?php
 	$this->widget('zii.widgets.grid.CGridView', array(
-		'id' => 'cats-grid',
+		'id' => 'cat-grid',
 		'dataProvider' => $model->search(),
 		'filter' => $model,
 		'columns' => array(

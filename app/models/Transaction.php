@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model class for table "Transactions".
+ * This is the model class for table "Transaction".
  *
- * The followings are the available columns in table 'Transactions':
+ * The followings are the available columns in table 'Transaction':
  * @property integer $Id
  * @property integer $AccountId
  * @property string $TransDate
@@ -16,12 +16,12 @@
  * The followings are the available model relations:
  * @property Payee $payee
  */
-class Transactions extends CActiveRecord
+class Transaction extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return Transactions the static model class
+	 * @return Transaction the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -33,7 +33,7 @@ class Transactions extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'Transactions';
+		return 'Transaction';
 	}
 
 	/**
@@ -61,9 +61,9 @@ class Transactions extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'accounts' => array(self::BELONGS_TO, 'accounts', 'AccountId'),
-			'payees' => array(self::BELONGS_TO, 'payees', 'PayeeId'),
-			'subCats' => array(self::BELONGS_TO, 'subCats', 'SubCatId'),
+			'relAccount' => array(self::BELONGS_TO, 'Account', 'AccountId'),
+			'relPayee' => array(self::BELONGS_TO, 'Payee', 'PayeeId'),
+			'relSubCat' => array(self::BELONGS_TO, 'SubCat', 'SubCatId'),
 		);
 	}
 
@@ -95,7 +95,7 @@ class Transactions extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-	//	$criteria->compare('Id',$this->Id);
+//		$criteria->compare('Id',$this->Id);
 		$criteria->compare('AccountId',$this->AccountId,true);
 		$criteria->compare('TransDate',$this->TransDate,true);
 		$criteria->compare('TransType',$this->TransType,true);
@@ -103,6 +103,7 @@ class Transactions extends CActiveRecord
 		$criteria->compare('TransAmount',$this->TransAmount,true);
 		$criteria->compare('TransId',$this->TransId);
 		$criteria->compare('SubCatId',$this->SubCatId);
+		$criteria->order = 'TransDate DESC';
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -121,6 +122,15 @@ class Transactions extends CActiveRecord
 		return date($format, $this->transDateInt);
 	}
 	
+	public function getAccountTransactions($accId)
+	{
+		$criteria=new CDbCriteria;
+		$criteria->condition = 'AccountId='.$accId;
+		$criteria->order = 'TransDate DESC';
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}
 
 	
 }

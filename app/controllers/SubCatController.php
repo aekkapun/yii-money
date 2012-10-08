@@ -1,6 +1,6 @@
 <?php
 
-class SubCatsController extends Controller
+class SubCatController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -61,14 +61,14 @@ class SubCatsController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new SubCats;
+		$model=new SubCat;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['SubCats']))
+		if(isset($_POST['SubCat']))
 		{
-			$model->attributes=$_POST['SubCats'];
+			$model->attributes=$_POST['SubCat'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->Id));
 		}
@@ -90,9 +90,9 @@ class SubCatsController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['SubCats']))
+		if(isset($_POST['SubCat']))
 		{
-			$model->attributes=$_POST['SubCats'];
+			$model->attributes=$_POST['SubCat'];
 			if($model->save())
 				$this->redirect(array('admin'));
 		}
@@ -127,7 +127,7 @@ class SubCatsController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('SubCats');
+		$dataProvider=new CActiveDataProvider('SubCat');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -138,10 +138,10 @@ class SubCatsController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new SubCats('search');
+		$model=new SubCat('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['SubCats']))
-			$model->attributes=$_GET['SubCats'];
+		if(isset($_GET['SubCat']))
+			$model->attributes=$_GET['SubCat'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -155,7 +155,7 @@ class SubCatsController extends Controller
 	 */
 	public function loadModel($id)
 	{
-		$model=SubCats::model()->findByPk($id);
+		$model=SubCat::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
