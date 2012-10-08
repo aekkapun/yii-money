@@ -25,8 +25,16 @@ $('.search-form form').submit(function(){
 
 <div class="row-fluid">
 	<h1>Manage Accounts</h1>
-	<?php echo CHtml::link('Advanced Search', '#', array('class' => 'search-button btn btn-primary btn-info')); ?>
-	<div class="search-form" style="display:none">
+	<div class="row-fluid">
+		<div class="action-buttons">
+			<?php echo CHtml::Link('Add New Account',array('create'),array('class'=>'btn btn-success')); ?>
+			<?php echo CHtml::link('Advanced Search', '#', array('class' => 'search-button btn btn-primary btn-info')); ?>
+		</div>
+	</div>
+</div>
+
+<div class="row-fluid">
+		<div class="search-form" style="display:none">
 		<?php
 		$this->renderPartial('_search', array(
 			'model' => $model,
@@ -34,8 +42,8 @@ $('.search-form form').submit(function(){
 		?>
 	</div><!-- search-form -->	
 </div>
-
 <div class="row-fluid">
+	<h2>Accounts</h2>
 	<?php
 	$this->widget('zii.widgets.grid.CGridView', array(
 		'id' => 'account-grid',
@@ -57,5 +65,4 @@ $('.search-form form').submit(function(){
 		)
 	));
 	?>
-
 </div>

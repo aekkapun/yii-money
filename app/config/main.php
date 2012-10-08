@@ -7,7 +7,7 @@
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'defaultController' => 'Transactions/admin',
+	'defaultController' => 'Account/admin',
 	'name'=>'Yii money',
 
 	// preloading 'log' component
