@@ -3,14 +3,9 @@
 	<h3>Accounts</h3>
 	<div class="sidebar-nav">
 		<?php
-			$items = array();
-			$accounts = Account::model()->findAll();
-			foreach ($accounts as $account)
-				$items[] = array('label' => $account->AccName, 'url' => array('account/view','id'=>$account->Id));
-
 			$this->widget('zii.widgets.CMenu', array(
 				'htmlOptions' => array('class' => 'nav nav-pills nav-stacked'),
-				'items' => $items
+				'items' => Account::model()->getAccountMenuItems()
 			));
 		?>
 	</div>

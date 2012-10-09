@@ -96,6 +96,18 @@ class Account extends CActiveRecord
 		));
 	}
 	
+	/**
+	 * get an array of Account models
+	 * @return array of Account models
+	 */
+	public function getAccountMenuItems() 
+	{
+		$menuItems = array();
+		
+		foreach ($this->findAll() as $account)
+			$menuItems[] = array('label' => $account->AccName, 'url' => array('account/view', 'id' => $account->Id));
+		return $menuItems;
+	}
 	
 
 }
