@@ -11,7 +11,10 @@ return array(
 	'name'=>'Yii money',
 
 	// preloading 'log' component
-	'preload'=>array('log'),
+	'preload'=>array(
+		'log',
+		'bootstrap',
+	),
 
 	// autoloading model and component classes
 	'import'=>array(
@@ -35,6 +38,10 @@ return array(
 
 	// application components
 	'components'=>array(
+		'bootstrap'=>array(
+			'class'=>'ext.bootstrap.components.Bootstrap', // assuming you extracted bootstrap under extensions
+			'responsiveCss'=>true,
+		),
 		'user'=>array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,

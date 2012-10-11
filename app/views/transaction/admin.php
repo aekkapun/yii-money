@@ -46,7 +46,8 @@ Yii::app()->clientScript->registerScript('search', "
 <div class="row-fluid">
 	<h2>All Transactions</h2>
 	<?php
-	$this->widget('zii.widgets.grid.CGridView', array(
+	$this->widget('bootstrap.widgets.TbGridView', array(
+		'type'=>'striped bordered condensed',
 		'id' => 'transactions-grid',
 		'dataProvider' => $model->search(),
 		'filter' => $model,
@@ -72,12 +73,10 @@ Yii::app()->clientScript->registerScript('search', "
 				'value' => 'Yii::app()->numberFormatter->formatCurrency($data->TransAmount,Yii::app()->params->currency)',
 			),
 			array(
-				'class' => 'CButtonColumn',
-				'deleteButtonImageUrl' => Yii::app()->baseUrl.'/images/form-reset.png',
-				'updateButtonImageUrl' => Yii::app()->baseUrl.'/images/form-edit.png',
-				'viewButtonImageUrl' => Yii::app()->baseUrl.'/images/form-submit.png',
-			),
-		),
+				'class'=>'bootstrap.widgets.TbButtonColumn',
+				'htmlOptions'=>array('style'=>'width: 50px'),
+			)
+		)
 	));
 	?>
 </div>

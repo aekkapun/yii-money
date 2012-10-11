@@ -27,11 +27,18 @@
 	<div class="row-fluid">
 		<?php if (isset($this->breadcrumbs)): ?>
 			<?php
-			$this->widget('application.widgets.DBreadcrumbs', array(
+			$this->widget('bootstrap.widgets.TbBreadcrumbs', array(
 				'links' => $this->breadcrumbs,
 			));
 			?><!-- breadcrumbs -->
 		<?php endif ?>	
+<!--		<?php // if (isset($this->breadcrumbs)): ?>
+			<?php
+		//	$this->widget('application.widgets.DBreadcrumbs', array(
+		//		'links' => $this->breadcrumbs,
+	//		));
+	//		?> breadcrumbs 
+		<?php // endif ?>	-->
 	</div>
 	<?php echo $content; ?>
 </div>

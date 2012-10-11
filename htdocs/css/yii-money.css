@@ -6,7 +6,7 @@
 */
 
 
-/** General **/
+/* General */
 body{padding-bottom: 40px;padding-top: 60px;}
 
 a,a:focus{outline: none;}
@@ -14,24 +14,13 @@ a,a:focus{outline: none;}
 
 span.required{color:#ff0000;}
 
-/** Headings **/
+ /*Headings*/ 
 h2, h3, h4, h5, h6{margin:0 0 5px 0px}
 h1{font-size: 23px;line-height: 29px;margin: 0 0 20px;}
 h2{font-size: 21px;line-height: 21px;}
 
-/** Grid View **/
-.grid-view{padding: 0 0 15px;}
-.grid-view table.items th {background: none repeat scroll 0 0 #666666;}
-.grid-view .filters input, .grid-view .filters select {border: 1px solid #CCCCCC;width: 93%;}
-.grid-view table.items tr:hover, .grid-view table.items tr.odd:hover, .grid-view table.items tr.odd.selected{background:#49AFCD;color:#fff;}
-.grid-view table.items tr.selected{background:#49AFCD;color:#fff;}
-.grid-view table.items tr.odd {background:#ECECEC;}
-.grid-view .button-column {width: 75px;}
 
-ul.yiiPager a:link, ul.yiiPager a:visited {color: #0E509E;font-weight: bold;padding: 5px 14px;text-decoration: none;display: inline-block;border-radius: 15px 15px 15px 15px;border: 1px solid #DDDDDD;background-color: #FFFFFF;}
-.summary{font-family: Lucida Grande;font-style: italic;font-weight: bold;}
-
-/* Detail View */
+ /*Detail View*/ 
 table.detail-view{margin: 0 0 30px;font-size: 15px;}
 
 .form{overflow: hidden;}

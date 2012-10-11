@@ -26,16 +26,16 @@ class Controller extends CController
 	 * trying to load style sheets after yii assets
 	 */
 	public function initCSS(){
-		$cssFiles = array('bootstrap','bootstrap-responsive','yii-money');
+		$cssFiles = array('yii-money');
 		foreach($cssFiles as $cssFile){
 			Yii::app()->clientScript->registerCssFile(Yii::app()->request->baseUrl.'/css/'.$cssFile.'.css', '');
 		}
 	}
 
 	public function initJs(){
-		$jsFiles = array('bootstrap-tabs');
-		foreach($jsFiles as $jsFile){
-			Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/js/'.$jsFile.'.js', '');
-		}
+//		$jsFiles = array('bootstrap-tabs');
+//		foreach($jsFiles as $jsFile){
+//			Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/js/'.$jsFile.'.js', '');
+//		}
 	}
 }

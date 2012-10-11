@@ -8,32 +8,38 @@
 		<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 	</head>
 	<body class="<?php echo Yii::app()->controller->action->id; ?>">
-		<div class="navbar navbar-fixed-top">
-			<div class="navbar-inner">
-				<div class="container">
-<!--					<a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse"></a>-->
-					<a class="brand" href="#"><em>Yii money</em></a>
-					<div class="nav-collapse">
-						<?php
-						$this->widget('zii.widgets.CMenu', array(
-							'htmlOptions' => array('class' => 'nav'),
-							'items' => array(
-								array('label' => 'Transactions', 'url' => array('/transaction/admin')),
-								array('label' => 'Payees', 'url' => array('/payee/admin')),
-								array('label' => 'Categories', 'url' => array('/cat/admin')),
-								array('label' => 'Sub Categories', 'url' => array('/subcat/admin')),
-								array('label' => 'Accounts', 'url' => array('/account/admin')),
-								array('label' => 'Account Types', 'url' => array('/acctype/admin')),
-								array('label' => 'Login', 'url' => array('/admin/login'), 'visible' => Yii::app()->user->isGuest),
-								array('label' => 'Logout (' . Yii::app()->user->name . ')', 'url' => array('/admin/logout'), 'visible' => !Yii::app()->user->isGuest)
-							),
-						));
-						?>
-						<p class="navbar-text pull-right">Logged in as <a href="#"><?php echo Yii::app()->user->name ;?></a></p>
-					</div>
-				</div>
-			</div>
-		</div>
+		<?php $this->widget('bootstrap.widgets.TbNavbar', array(
+			'type'=>'inverse', // null or 'inverse'
+			'brand'=>'Yii money',
+			'brandUrl'=>'#',
+			'collapse'=>true, // requires bootstrap-responsive.css
+			'fluid'=>true,
+			'fixed'=>'top',
+			'items'=>array(
+				array(
+					'class'=>'bootstrap.widgets.TbMenu',
+					'htmlOptions' => array('class' => 'nav'),
+					'items' => array(
+						array('label' => 'Transactions', 'url' => array('/transaction/admin')),
+						array('label' => 'Payees', 'url' => array('/payee/admin')),
+						array('label' => 'Categories', 'url' => array('/cat/admin')),
+						array('label' => 'Sub Categories', 'url' => array('/subcat/admin')),
+						array('label' => 'Accounts', 'url' => array('/account/admin')),
+						array('label' => 'Account Types', 'url' => array('/acctype/admin')),
+						array('label' => 'Login', 'url' => array('/admin/login'), 'visible' => Yii::app()->user->isGuest),
+					),
+				),
+				array(
+					'class'=>'bootstrap.widgets.TbMenu',
+					'htmlOptions'=>array('class'=>'pull-right'),
+					'items'=>array(
+						array('label'=>Yii::app()->user->name, 'url'=>'#', 'items'=>array(
+							array('label'=>'Logout', 'url' => array('/admin/logout'), 'visible' => !Yii::app()->user->isGuest),
+						)),
+					),
+				),
+			),
+		)); ?>
 		<div class="container-fluid">
 			<div class="row-fluid">
 				<?php echo $content; ?>

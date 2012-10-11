@@ -16,7 +16,8 @@ $this->menu=array(
 	<h1>Account Details: <?php echo $model->AccName; ?></h1>
 
 	<?php
-	$this->widget('zii.widgets.CDetailView', array(
+	$this->widget('bootstrap.widgets.TbDetailView', array(
+		'type'=>'striped bordered condensed',
 		'data' => $model,
 		'attributes' => array(
 			'AccName',
@@ -48,7 +49,8 @@ $this->menu=array(
 	<h2>Transactions</h2>
 	<?php
 	$transactionsModel = Transaction::model();
-	$this->widget('zii.widgets.grid.CGridView', array(
+	$this->widget('bootstrap.widgets.TbGridView', array(
+		'type'=>'striped bordered condensed',
 		'id' => 'transactions-grid',
 		'dataProvider' => $transactionsModel->getAccountTransactions($model->Id),
 		'filter' => $transactionsModel,
@@ -71,10 +73,8 @@ $this->menu=array(
 				'value' => 'Yii::app()->numberFormatter->formatCurrency($data->TransAmount,Yii::app()->params->currency)',
 			),
 			array(
-				'class' => 'CButtonColumn',
-				'deleteButtonImageUrl' => Yii::app()->baseUrl.'/images/form-reset.png',
-				'updateButtonImageUrl' => Yii::app()->baseUrl.'/images/form-edit.png',
-				'viewButtonImageUrl' => Yii::app()->baseUrl.'/images/form-submit.png',
+				'class'=>'bootstrap.widgets.TbButtonColumn',
+				'htmlOptions'=>array('style'=>'width: 50px'),
 			),
 		),
 	));
