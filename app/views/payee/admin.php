@@ -35,23 +35,24 @@ $('.search-form form').submit(function(){
 	</div><!-- search-form -->	
 </div>
 
-
-
+<br/>
+<br/>
 <div class="row-fluid">
+	<h2>Payees</h2>
 	<?php
-	$this->widget('zii.widgets.grid.CGridView', array(
+	$this->widget('bootstrap.widgets.TbGridView', array(
+		'type'=>'striped bordered condensed',
 		'id' => 'payee-grid',
 		'dataProvider' => $model->search(),
 		'filter' => $model,
 		'columns' => array(
 			'PayeeName',
 			array(
-				'class' => 'CButtonColumn',
-				'deleteButtonImageUrl' => Yii::app()->baseUrl.'/images/form-reset.png',
-				'updateButtonImageUrl' => Yii::app()->baseUrl.'/images/form-edit.png',
-				'viewButtonImageUrl' => Yii::app()->baseUrl.'/images/form-submit.png',
-			),
-		),
+				'class'=>'bootstrap.widgets.TbButtonColumn',
+				'htmlOptions'=>array('style'=>'width: 50px'),
+			)
+		)
 	));
 	?>
 </div>
+

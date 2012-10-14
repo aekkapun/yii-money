@@ -20,13 +20,17 @@
 					'class'=>'bootstrap.widgets.TbMenu',
 					'htmlOptions' => array('class' => 'nav'),
 					'items' => array(
-						array('label' => 'Transactions', 'url' => array('/transaction/admin')),
-						array('label' => 'Payees', 'url' => array('/payee/admin')),
-						array('label' => 'Categories', 'url' => array('/cat/admin')),
-						array('label' => 'Sub Categories', 'url' => array('/subcat/admin')),
-						array('label' => 'Accounts', 'url' => array('/account/admin')),
-						array('label' => 'Account Types', 'url' => array('/acctype/admin')),
-						array('label' => 'Login', 'url' => array('/admin/login'), 'visible' => Yii::app()->user->isGuest),
+						array('label' => 'Transactions', 'url' => array('transaction/admin')),
+						
+						array('label' => 'Categories', 'url' => '#',
+						'items' => array(
+							array('label'=>'Main Categories', 'url' => '/cat/admin'),
+							array('label'=>'Sub Categories', 'url' => '/subcat/admin')
+						)),
+						array('label' => 'Accounts', 'url' => '#',
+							'items' => Account::model()->getAccountMenuItems(true,'Institutions',true)),
+						array('label' => 'Payees', 'url' => array('payee/admin')),
+						array('label' => 'Login', 'url' => array('admin/login'), 'visible' => Yii::app()->user->isGuest),
 					),
 				),
 				array(
@@ -34,7 +38,7 @@
 					'htmlOptions'=>array('class'=>'pull-right'),
 					'items'=>array(
 						array('label'=>Yii::app()->user->name, 'url'=>'#', 'items'=>array(
-							array('label'=>'Logout', 'url' => array('/admin/logout'), 'visible' => !Yii::app()->user->isGuest),
+							array('label'=>'Logout', 'url' => array('admin/logout'), 'visible' => !Yii::app()->user->isGuest),
 						)),
 					),
 				),

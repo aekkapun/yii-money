@@ -34,10 +34,13 @@ $('.search-form form').submit(function(){
 		?>
 	</div><!-- search-form -->
 </div>
-
+<br/>
+<br/>
 <div class="row-fluid">
+	<h2>Categories</h2>
 	<?php
-	$this->widget('zii.widgets.grid.CGridView', array(
+	$this->widget('bootstrap.widgets.TbGridView', array(
+		'type'=>'striped bordered condensed',
 		'id' => 'sub-cat-grid',
 		'dataProvider' => $model->search(),
 		'filter' => $model,
@@ -49,12 +52,10 @@ $('.search-form form').submit(function(){
 			'SubCatName',
 			'CatType',
 			array(
-				'class' => 'CButtonColumn',
-				'deleteButtonImageUrl' => Yii::app()->baseUrl.'/images/form-reset.png',
-				'updateButtonImageUrl' => Yii::app()->baseUrl.'/images/form-edit.png',
-				'viewButtonImageUrl' => Yii::app()->baseUrl.'/images/form-submit.png',
+				'class'=>'bootstrap.widgets.TbButtonColumn',
+				'htmlOptions'=>array('style'=>'width: 50px'),
 			)
 		)
 	));
-	?>	
+	?>
 </div>

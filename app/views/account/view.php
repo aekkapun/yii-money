@@ -4,9 +4,11 @@ $this->breadcrumbs=array(
 	$model->AccName,
 );
 
-$this->menu=array(
-//	array('label'=>'List Accounts', 'url'=>array('index')),
-);
+$this->tasksMenu[]=array('label'=>'Accounts home', 'icon'=>'home', 'url'=>array('admin'));
+$this->tasksMenu[]='---';
+$this->tasksMenu[]=array('label'=>'Add a new account', 'icon'=>'pencil', 'url'=>array('create'));
+$this->tasksMenu[]=array('label'=>'Edit this account', 'icon'=>'edit', 'url'=>array('update','id'=>$model->Id));
+$this->tasksMenu[]=array('label'=>'Delete this account', 'icon'=>'trash', 'url'=>array('delete','id'=>$model->Id));
 
 ?>
 
@@ -36,12 +38,15 @@ $this->menu=array(
 	?>
 </div>
 
+
 <div class="row-fluid">
-	<div class="action-buttons">
-		<?php echo CHtml::Link('Delete Account',array('delete','id'=>$model->Id),array('class'=>'btn btn-danger')); ?>
-		<?php echo CHtml::Link('Update Account',array('update','id'=>$model->Id),array('class'=>'btn btn-warning')); ?>
-		<?php echo CHtml::Link('Add New Account',array('create'),array('class'=>'btn btn-success')); ?>	
-	</div>
+	<h2>Last 30 days</h2>
+	<br/>
+	<br/>
+	<br/>
+		<?php // echo CHtml::Link('Delete Account',array('delete','id'=>$model->Id),array('class'=>'btn btn-danger')); ?>
+		<?php // echo CHtml::Link('Update Account',array('update','id'=>$model->Id),array('class'=>'btn btn-warning')); ?>
+		<?php // echo CHtml::Link('Add New Account',array('create'),array('class'=>'btn btn-success')); ?>	
 </div>
 
 

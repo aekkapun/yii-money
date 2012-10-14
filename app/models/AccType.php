@@ -86,4 +86,20 @@ class AccType extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+	
+	/**
+	 * get an array of Account Type models
+	 * @return array of Account Type models
+	 */
+	public function getAccountTypeMenuItems($heading = true, $headingText = 'Account Types') 
+	{
+		$menuItems = array();
+		if($heading)
+			$menuItems = array(array('label'=>$headingText));
+		
+		foreach ($this->findAll() as $accountType)
+			$menuItems[] = array('label' => $accountType->AccTypeName, 'url' => array('acctype/view', 'id' => $accountType->Id));
+		return $menuItems;
+	}
+	
 }

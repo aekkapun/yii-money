@@ -100,14 +100,22 @@ class Account extends CActiveRecord
 	 * get an array of Account models
 	 * @return array of Account models
 	 */
-	public function getAccountMenuItems() 
+	public function getAccountMenuItems($heading = true, $headingText = 'Accounts', $accTypes = false) 
 	{
 		$menuItems = array();
 		
+		if($heading)
+			$menuItems = array(array('label'=>$headingText));
+		
 		foreach ($this->findAll() as $account)
-			$menuItems[] = array('label' => $account->AccName, 'url' => array('account/view', 'id' => $account->Id));
-		return $menuItems;
+			$menuItems[] = array('label' => $account->AccName,'url' => array('account/view', 'id' => $account->Id));
+		
+		if($accTypes){
+			array_push($menuItems, '---');
+			return array_merge($menuItems,AccType::model()->getAccountTypeMenuItems(true));
+		}
+		else
+			return $menuItems;
 	}
-	
 
 }
