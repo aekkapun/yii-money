@@ -81,3 +81,7 @@ Yii::app()->clientScript->registerScript('search', "
 	?>
 </div>
 
+<?php $obj = $model->getAccountBalances();?>
+<?php // echo $obj['BankAccount'][0];?>
+<?php echo '<pre>'.print_r($obj['Bank Account'],true).'</pre>';?>
+

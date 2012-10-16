@@ -132,5 +132,26 @@ class Transaction extends CActiveRecord
 		));
 	}
 
-	
+	public function getAccountBalances()
+	{
+//		$accountBlocks = array();
+//		
+//		$accountLists = array();
+//		$accountTypes = AccType::model()->findAll();
+//		
+//		foreach($accountTypes as $accountType){
+//			$accountLists[$accountType->AccTypeName] = Account::model()->findByPk($accountType->Id);
+//		}
+//		
+//		foreach($accountLists as $key => $accountList){
+//			
+//			for($i=0; $i <= count($accountList); $i++){
+//				$accountBlocks[$key][] = $accountList->AccName;
+//			}
+//			
+//		}
+//		
+//		return $accountBlocks;
+		
+	}
 }

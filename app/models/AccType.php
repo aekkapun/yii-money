@@ -91,19 +91,18 @@ class AccType extends CActiveRecord
 	 * get an array of Account Type models
 	 * @return array of Account Type models
 	 */
-	public function getAccountTypeMenuItems($heading = true, $headingText = 'Account Types') 
+	public function getAccountTypeMenuItems($homeLink = true) 
 	{
 		$menuItems = array();
-		if($heading){
+		if($homeLink){
 			$menuItems = array(
 				array('label' => 'Accounts home', 'icon' => 'home', 'url' => array('account/admin')),
 				'---',
-				array('label' => $headingText),
 				);
 		}
 		
-		foreach ($this->findAll() as $accountType)
-			$menuItems[] = array('label' => $accountType->AccTypeName, 'url' => array('acctype/view', 'id' => $accountType->Id));
+		foreach($this->findAll() as $accountType)
+			$menuItems[] = array('label' => $accountType->AccTypeName.'s', 'url' => array('acctype/view', 'id' => $accountType->Id));
 		return $menuItems;
 	}
 	
