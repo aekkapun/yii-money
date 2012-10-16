@@ -28,7 +28,7 @@
 							array('label'=>'Sub Categories', 'url' => '/subcat/admin')
 						)),
 						array('label' => 'Accounts', 'url' => '#',
-							'items' => Account::model()->getAccountMenuItems(true,'Institutions',true)),
+							'items' => AccType::model()->getAccountTypeMenuItems(true)),
 						array('label' => 'Payees', 'url' => array('payee/admin')),
 						array('label' => 'Login', 'url' => array('admin/login'), 'visible' => Yii::app()->user->isGuest),
 					),
