@@ -1,13 +1,7 @@
 <?php
-$this->breadcrumbs = array(
-	'Transactions' => array('index'),
-	'Manage',
-);
-
-$this->menu = array(
-	array('label' => 'List Transactions', 'url' => array('index')),
-	array('label' => 'Create Transactions', 'url' => array('create')),
-);
+$this->tasksMenu[]=array('label'=>'Accounts home', 'icon'=>'home', 'url'=>array('/account/admin'));
+$this->tasksMenu[]='---';
+$this->tasksMenu[]=array('label'=>'Add a new transaction', 'icon'=>'pencil', 'url'=>array('create'));
 
 Yii::app()->clientScript->registerScript('search', "
 	$('.search-button').click(function(){
@@ -54,7 +48,8 @@ Yii::app()->clientScript->registerScript('search', "
 		'columns' => array(
 			array(
 				'name' => 'AccountId',
-				'value' => '$data->relAccount->AccName'
+				'type' => 'raw',
+				'value' => 'CHtml::link($data->relAccount->AccName,"/account/view/id/$data->AccountId")'
 			), array(
 				'name' => 'TransDate',
 				'value' => 'date("M j, Y", $data->transDateInt)',
@@ -62,11 +57,13 @@ Yii::app()->clientScript->registerScript('search', "
 			'TransType',
 			array(
 				'name' => 'PayeeId',
-				'value' => '$data->relPayee->PayeeName',
+				'type' => 'raw',
+				'value' => 'CHtml::link($data->relPayee->PayeeName,"/payee/view/id/$data->SubCatId")'
 			),
 			array(
 				'name' => 'SubCatId',
-				'value' => '$data->relSubCat->getCatName($data->SubCatId).$data->relSubCat->SubCatName',
+				'type' => 'raw',
+				'value' => 'CHtml::link($data->relSubCat->getCatName($data->SubCatId).$data->relSubCat->SubCatName,"/subcat/view/id/$data->SubCatId")'
 			),
 			array(
 				'name' => 'TransAmount',
@@ -81,7 +78,4 @@ Yii::app()->clientScript->registerScript('search', "
 	?>
 </div>
 
-<?php $obj = $model->getAccountBalances();?>
-<?php // echo $obj['BankAccount'][0];?>
-<?php echo '<pre>'.print_r($obj['Bank Account'],true).'</pre>';?>
 

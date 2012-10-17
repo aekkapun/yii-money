@@ -1,13 +1,12 @@
 <?php
-$this->breadcrumbs = array(
-	'Accounts' => array('index'),
-	'Manage',
+$this->breadcrumbs=array(
+	'Accounts'=>array('index'),
+	$model->AccName,
 );
 
-$this->menu = array(
-	array('label' => 'List Accounts', 'url' => array('index')),
-	array('label' => 'Create Accounts', 'url' => array('create')),
-);
+$this->tasksMenu[]=array('label'=>'Accounts home', 'icon'=>'home', 'url'=>array('admin'));
+$this->tasksMenu[]='---';
+$this->tasksMenu[]=array('label'=>'Add a new account', 'icon'=>'pencil', 'url'=>array('create'));
 
 Yii::app()->clientScript->registerScript('search', "
 $('.search-button').click(function(){

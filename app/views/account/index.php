@@ -1,12 +1,12 @@
 <?php
 $this->breadcrumbs=array(
-	'Accounts',
+	'Accounts'=>array('index'),
 );
 
-$this->menu=array(
-	array('label'=>'Create Accounts', 'url'=>array('create')),
-	array('label'=>'Manage Accounts', 'url'=>array('admin')),
-);
+$this->tasksMenu[]=array('label'=>'Accounts home', 'icon'=>'home', 'url'=>array('admin'));
+$this->tasksMenu[]='---';
+$this->tasksMenu[]=array('label'=>'Add a new account', 'icon'=>'pencil', 'url'=>array('create'));
+
 ?>
 
 <h1>Accounts</h1>

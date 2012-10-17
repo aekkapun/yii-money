@@ -1,16 +1,15 @@
 <?php
 $this->breadcrumbs=array(
 	'Acc Types'=>array('index'),
-	$model->Id,
+	$model->AccTypeName.'s',
 );
 
-$this->menu=array(
-	array('label'=>'List AccType', 'url'=>array('index')),
-	array('label'=>'Create AccType', 'url'=>array('create')),
-	array('label'=>'Update AccType', 'url'=>array('update', 'id'=>$model->Id)),
-	array('label'=>'Delete AccType', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->Id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage AccType', 'url'=>array('admin')),
-);
+$this->tasksMenu[]=array('label'=>'Accounts home', 'icon'=>'home', 'url'=>array('admin'));
+$this->tasksMenu[]='---';
+$this->tasksMenu[]=array('label'=>'Add a new account type', 'icon'=>'pencil', 'url'=>array('create'));
+$this->tasksMenu[]=array('label'=>'Edit this account type', 'icon'=>'edit', 'url'=>array('update','id'=>$model->Id));
+$this->tasksMenu[]=array('label'=>'Delete this account type', 'icon'=>'trash', 'url'=>array('delete','id'=>$model->Id));
+
 ?>
 
 <h1>View AccType #<?php echo $model->Id; ?></h1>

@@ -39,17 +39,6 @@ $this->tasksMenu[]=array('label'=>'Delete this account', 'icon'=>'trash', 'url'=
 </div>
 
 
-<div class="row-fluid">
-	<h2>Last 30 days</h2>
-	<br/>
-	<br/>
-	<br/>
-		<?php // echo CHtml::Link('Delete Account',array('delete','id'=>$model->Id),array('class'=>'btn btn-danger')); ?>
-		<?php // echo CHtml::Link('Update Account',array('update','id'=>$model->Id),array('class'=>'btn btn-warning')); ?>
-		<?php // echo CHtml::Link('Add New Account',array('create'),array('class'=>'btn btn-success')); ?>	
-</div>
-
-
 <div class="row-fluid row-transactions-grid">
 	<h2>Transactions</h2>
 	<?php
@@ -57,7 +46,7 @@ $this->tasksMenu[]=array('label'=>'Delete this account', 'icon'=>'trash', 'url'=
 	$this->widget('bootstrap.widgets.TbGridView', array(
 		'type'=>'striped bordered condensed',
 		'id' => 'transactions-grid',
-		'dataProvider' => $transactionsModel->getAccountTransactions($model->Id),
+		'dataProvider' => $transactionsModel->getAccountTransactions('AccountId',$model->Id,'TransDate DESC'),
 		'filter' => $transactionsModel,
 		'columns' => array(
 			array(
@@ -67,11 +56,13 @@ $this->tasksMenu[]=array('label'=>'Delete this account', 'icon'=>'trash', 'url'=
 			'TransType',
 			array(
 				'name' => 'PayeeId',
-				'value' => '$data->relPayee->PayeeName'
+				'type' => 'raw',
+				'value' => 'CHtml::link($data->relPayee->PayeeName,"/payee/view/id/$data->SubCatId")'
 			),
 			array(
 				'name' => 'SubCatId',
-				'value' => '$data->relSubCat->getCatName($data->SubCatId).$data->relSubCat->SubCatName',
+				'type' => 'raw',
+				'value' => 'CHtml::link($data->relSubCat->getCatName($data->SubCatId).$data->relSubCat->SubCatName,"/subcat/view/id/$data->SubCatId")'
 			),
 			array(
 				'name' => 'TransAmount',
