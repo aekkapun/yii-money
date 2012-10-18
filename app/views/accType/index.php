@@ -1,17 +1,53 @@
 <?php
 $this->breadcrumbs=array(
-	'Acc Types',
+	'Account Types'
 );
 
-$this->menu=array(
-	array('label'=>'Create AccType', 'url'=>array('create')),
-	array('label'=>'Manage AccType', 'url'=>array('admin')),
-);
+$this->tasksMenu[]=array('label'=>'Accounts Home', 'icon'=>'home', 'url'=>array('/account'));
+$this->tasksMenu[]='---';
+$this->tasksMenu[]=array('label'=>'New Account Type', 'icon'=>'pencil', 'url'=>array('create'));
+
+Yii::app()->clientScript->registerScript('search', "
+$('.search-button').click(function(){
+	$('.search-form').slideToggle();
+	return false;
+});
+$('.search-form form').submit(function(){
+	$.fn.yiiGridView.update('acc-type-grid', {
+		data: $(this).serialize()
+	});
+	return false;
+});
+");
 ?>
 
-<h1>Acc Types</h1>
+<div class="row-fluid">
+	<h1>Manage Account Types</h1>
+	<?php echo CHtml::link('Advanced Search', '#', array('class' => 'search-button btn btn-primary btn-info')); ?>
+	<div class="search-form" style="display:none">
+		<?php
+		$this->renderPartial('_search', array(
+			'model' => $model,
+		));
+		?>
+	</div><!-- search-form -->
+</div>
 
-<?php $this->widget('zii.widgets.CListView', array(
-	'dataProvider'=>$dataProvider,
-	'itemView'=>'_view',
-)); ?>
+<div class="row-fluid">
+	<?php
+	$this->widget('zii.widgets.grid.CGridView', array(
+		'id' => 'acc-type-grid',
+		'dataProvider' => $model->search(),
+		'filter' => $model,
+		'columns' => array(
+			'AccTypeName',
+			array(
+				'class' => 'CButtonColumn',
+				'deleteButtonImageUrl' => Yii::app()->baseUrl.'/images/form-reset.png',
+				'updateButtonImageUrl' => Yii::app()->baseUrl.'/images/form-edit.png',
+				'viewButtonImageUrl' => Yii::app()->baseUrl.'/images/form-submit.png',
+			),
+		),
+	));
+	?>	
+</div>

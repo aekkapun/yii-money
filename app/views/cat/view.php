@@ -9,7 +9,6 @@ $this->menu=array(
 	array('label'=>'Create Cats', 'url'=>array('create')),
 	array('label'=>'Update Cats', 'url'=>array('update', 'id'=>$model->Id)),
 	array('label'=>'Delete Cats', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->Id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Cats', 'url'=>array('admin')),
 );
 ?>
 

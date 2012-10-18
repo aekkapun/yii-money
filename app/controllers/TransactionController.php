@@ -71,7 +71,7 @@ class TransactionController extends Controller
 			}
 			$model->attributes = $_POST['Transaction'];
 			if ($model->save())
-				$this->redirect(array('admin'));
+				$this->redirect(array('index'));
 		}
 
 		$this->render('create', array(
@@ -96,7 +96,7 @@ class TransactionController extends Controller
 			}
 			$model->attributes = $_POST['Transaction'];
 			if ($model->save())
-				$this->redirect(array('admin'));
+				$this->redirect(array('index'));
 		}
 
 		$this->render('update', array(
@@ -106,7 +106,7 @@ class TransactionController extends Controller
 
 	/**
 	 * Deletes a particular model.
-	 * If deletion is successful, the browser will be redirected to the 'admin' page.
+	 * If deletion is successful, the browser will be redirected to the 'index' page.
 	 * @param integer $id the ID of the model to be deleted
 	 */
 	public function actionDelete($id)
@@ -116,9 +116,9 @@ class TransactionController extends Controller
 			// we only allow deletion via POST request
 			$this->loadModel($id)->delete();
 
-			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+			// if AJAX request (triggered by deletion via index grid view), we should not redirect the browser
 			if(!isset($_GET['ajax']))
-				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 		}
 		else
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
@@ -129,9 +129,13 @@ class TransactionController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Transaction');
+		$model=new Transaction('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['Transaction']))
+			$model->attributes=$_GET['Transaction'];
+
 		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
+			'model'=>$model,
 		));
 	}
 
@@ -140,14 +144,7 @@ class TransactionController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Transaction('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Transaction']))
-			$model->attributes=$_GET['Transaction'];
 
-		$this->render('admin',array(
-			'model'=>$model,
-		));
 	}
 
 	/**

@@ -36,7 +36,7 @@ class AccountController extends Controller
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
+				'users'=>array('index'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -94,7 +94,7 @@ class AccountController extends Controller
 		{
 			$model->attributes=$_POST['Account'];
 			if($model->save())
-				$this->redirect(array('admin'));
+				$this->redirect(array('index'));
 		}
 
 		$this->render('update',array(
@@ -104,7 +104,7 @@ class AccountController extends Controller
 
 	/**
 	 * Deletes a particular model.
-	 * If deletion is successful, the browser will be redirected to the 'admin' page.
+	 * If deletion is successful, the browser will be redirected to the 'index' page.
 	 * @param integer $id the ID of the model to be deleted
 	 */
 	public function actionDelete($id)
@@ -114,9 +114,9 @@ class AccountController extends Controller
 			// we only allow deletion via POST request
 			$this->loadModel($id)->delete();
 
-			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+			// if AJAX request (triggered by deletion via index grid view), we should not redirect the browser
 			if(!isset($_GET['ajax']))
-				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 		}
 		else
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
@@ -127,9 +127,13 @@ class AccountController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Account');
+		$model=new Account('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['Account']))
+			$model->attributes=$_GET['Account'];
+
 		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
+			'model'=>$model,
 		));
 	}
 
@@ -138,14 +142,7 @@ class AccountController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Account('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Account']))
-			$model->attributes=$_GET['Account'];
 
-		$this->render('admin',array(
-			'model'=>$model,
-		));
 	}
 
 	/**

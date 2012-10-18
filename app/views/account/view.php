@@ -4,7 +4,7 @@ $this->breadcrumbs=array(
 	$model->AccName,
 );
 
-$this->tasksMenu[]=array('label'=>'Accounts home', 'icon'=>'home', 'url'=>array('admin'));
+$this->tasksMenu[]=array('label'=>'Accounts home', 'icon'=>'home', 'url'=>array('index'));
 $this->tasksMenu[]='---';
 $this->tasksMenu[]=array('label'=>'Add a new account', 'icon'=>'pencil', 'url'=>array('create'));
 $this->tasksMenu[]=array('label'=>'Edit this account', 'icon'=>'edit', 'url'=>array('update','id'=>$model->Id));

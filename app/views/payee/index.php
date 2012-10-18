@@ -1,17 +1,56 @@
 <?php
-$this->breadcrumbs=array(
-	'Payees',
+$this->breadcrumbs = array(
+	'Payees'
 );
 
-$this->menu=array(
-	array('label'=>'Create Payees', 'url'=>array('create')),
-	array('label'=>'Manage Payees', 'url'=>array('admin')),
-);
+$this->tasksMenu[]=array('label'=>'Accounts Home', 'icon'=>'home', 'url'=>array('/account'));
+$this->tasksMenu[]='---';
+$this->tasksMenu[]=array('label'=>'New Payee', 'icon'=>'pencil', 'url'=>array('create'));
+
+Yii::app()->clientScript->registerScript('search', "
+$('.search-button').click(function(){
+	$('.search-form').slideToggle();
+	return false;
+});
+$('.search-form form').submit(function(){
+	$.fn.yiiGridView.update('payee-grid', {
+		data: $(this).serialize()
+	});
+	return false;
+});
+");
 ?>
 
-<h1>Payees</h1>
+<div class="row-fluid">
+	<h1>Manage Payees</h1>
+	<?php echo CHtml::link('Advanced Search', '#', array('class' => 'search-button btn btn-primary btn-info')); ?>
+	<div class="search-form" style="display:none">
+		<?php
+		$this->renderPartial('_search', array(
+			'model' => $model,
+		));
+		?>
+	</div><!-- search-form -->	
+</div>
 
-<?php $this->widget('zii.widgets.CListView', array(
-	'dataProvider'=>$dataProvider,
-	'itemView'=>'_view',
-)); ?>
+<br/>
+<br/>
+<div class="row-fluid">
+	<h2>Payees</h2>
+	<?php
+	$this->widget('bootstrap.widgets.TbGridView', array(
+		'type'=>'striped bordered condensed',
+		'id' => 'payee-grid',
+		'dataProvider' => $model->search(),
+		'filter' => $model,
+		'columns' => array(
+			'PayeeName',
+			array(
+				'class'=>'bootstrap.widgets.TbButtonColumn',
+				'htmlOptions'=>array('style'=>'width: 50px'),
+			)
+		)
+	));
+	?>
+</div>
+

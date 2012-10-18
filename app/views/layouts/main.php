@@ -20,16 +20,16 @@
 					'class'=>'bootstrap.widgets.TbMenu',
 					'htmlOptions' => array('class' => 'nav'),
 					'items' => array(
-						array('label' => 'Transactions', 'url' => array('transaction/admin')),
+						array('label' => 'Transactions', 'url' => array('/transaction')),
 						
 						array('label' => 'Categories', 'url' => '#',
 						'items' => array(
-							array('label'=>'Main Categories', 'url' => '/cat/admin'),
-							array('label'=>'Sub Categories', 'url' => '/subcat/admin')
+							array('label'=>'Category Groups', 'url' => '/cat'),
+							array('label'=>'Categories', 'url' => '/subcat')
 						)),
 						array('label' => 'Accounts', 'url' => '#',
 							'items' => AccType::model()->getAccountTypeMenuItems(true)),
-						array('label' => 'Payees', 'url' => array('payee/admin')),
+						array('label' => 'Payees', 'url' => array('/payee')),
 						array('label' => 'Login', 'url' => array('admin/login'), 'visible' => Yii::app()->user->isGuest),
 					),
 				),
