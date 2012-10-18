@@ -57,7 +57,7 @@ $this->tasksMenu[]=array('label'=>'Delete this account', 'icon'=>'trash', 'url'=
 			array(
 				'name' => 'PayeeId',
 				'type' => 'raw',
-				'value' => 'CHtml::link($data->relPayee->PayeeName,"/payee/view/id/$data->SubCatId")'
+				'value' => 'CHtml::link($data->relPayee->PayeeName,"/payee/view/id/$data->PayeeId")'
 			),
 			array(
 				'name' => 'SubCatId',

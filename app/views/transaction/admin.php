@@ -58,7 +58,7 @@ Yii::app()->clientScript->registerScript('search', "
 			array(
 				'name' => 'PayeeId',
 				'type' => 'raw',
-				'value' => 'CHtml::link($data->relPayee->PayeeName,"/payee/view/id/$data->SubCatId")'
+				'value' => 'CHtml::link($data->relPayee->PayeeName,"/payee/view/id/$data->PayeeId")'
 			),
 			array(
 				'name' => 'SubCatId',
