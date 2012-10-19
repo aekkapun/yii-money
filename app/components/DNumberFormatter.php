@@ -98,6 +98,21 @@ class DNumberFormatter extends CNumberFormatter
 	 */
 	protected function formatNumber($format,$value)
 	{
+		if (!empty($format)) {
+			$format = array(
+				'decimalDigits' => 2,
+				'maxDecimalDigits' => 2,
+				'integerDigits' => 1,
+				'groupSize1' => 0,
+				'groupSize2' => 0,
+				'positivePrefix' => '',
+				'positiveSuffix' => '',
+				'negativePrefix' => '-',
+				'negativeSuffix' => '',
+				'multiplier' => 1
+			);
+		}
+		
 		$negative=$value<0;
 		$value=abs($value*$format['multiplier']);
 		if($format['maxDecimalDigits']>=0)
