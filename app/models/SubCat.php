@@ -99,11 +99,8 @@ class SubCat extends CActiveRecord {
 	 * @param int $subCatId
 	 * @return string 'CategoryName: SubCatName'
 	 */
-	public function getCatName($subCatId) {
-		$cat = $this->model()->findByPk($subCatId);
-		$name = Cat::model()->findByPk($cat->CatId);
-		
-		return $name->CategoryName . ': ';
+	public function getCatName() {
+		return $this->relCat->CategoryName . ': ' . $this->SubCatName;
 	}
 
 }

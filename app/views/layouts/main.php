@@ -11,7 +11,7 @@
 		<?php $this->widget('bootstrap.widgets.TbNavbar', array(
 			'type'=>'inverse', // null or 'inverse'
 			'brand'=>'Yii money',
-			'brandUrl'=>'#',
+			'brandUrl'=>Yii::app()->homeUrl,
 			'collapse'=>true, // requires bootstrap-responsive.css
 			'fluid'=>true,
 			'fixed'=>'top',

@@ -96,7 +96,7 @@ class AccType extends CActiveRecord
 		$menuItems = array();
 		if($homeLink){
 			$menuItems = array(
-				array('label' => 'Accounts home', 'icon' => 'home', 'url' => array('/account')),
+				array('label' => 'Accounts home', 'icon' => 'home white', 'url' => array('/account')),
 				'---',
 				);
 		}

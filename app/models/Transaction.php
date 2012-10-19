@@ -132,27 +132,26 @@ class Transaction extends CActiveRecord
 		));
 	}
 	
+	
+	public function getAccountTypeTransactions($id)
+	{
+		$criteria=new CDbCriteria;
+		$criteria->condition = 'relAccount.AccTypeId='.$id;
+		$criteria->order = 'TransDate DESC';
+		
+		$criteria->with = 'relAccount';
+		$criteria->together = false;
+		
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}
+	
 
 	public function getAccountBalances()
 	{
-//		$accountBlocks = array();
-//		
-//		$accountLists = array();
-//		$accountTypes = AccType::model()->findAll();
-//		
-//		foreach($accountTypes as $accountType){
-//			$accountLists[$accountType->AccTypeName] = Account::model()->findByPk($accountType->Id);
-//		}
-//		
-//		foreach($accountLists as $key => $accountList){
-//			
-//			for($i=0; $i <= count($accountList); $i++){
-//				$accountBlocks[$key][] = $accountList->AccName;
-//			}
-//			
-//		}
-//		
-//		return $accountBlocks;
+
 		
 	}
+	
 }

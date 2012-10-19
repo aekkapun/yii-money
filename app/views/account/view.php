@@ -4,11 +4,11 @@ $this->breadcrumbs=array(
 	$model->AccName,
 );
 
-$this->tasksMenu[]=array('label'=>'Accounts home', 'icon'=>'home', 'url'=>array('index'));
+$this->tasksMenu[]=array('label'=>'Accounts home', 'icon'=>'home white', 'url'=>array('index'));
 $this->tasksMenu[]='---';
-$this->tasksMenu[]=array('label'=>'Add a new account', 'icon'=>'pencil', 'url'=>array('create'));
-$this->tasksMenu[]=array('label'=>'Edit this account', 'icon'=>'edit', 'url'=>array('update','id'=>$model->Id));
-$this->tasksMenu[]=array('label'=>'Delete this account', 'icon'=>'trash', 'url'=>array('delete','id'=>$model->Id));
+$this->tasksMenu[]=array('label'=>'Add a new account', 'icon'=>'pencil white', 'url'=>array('create'));
+$this->tasksMenu[]=array('label'=>'Edit this account', 'icon'=>'edit white', 'url'=>array('update','id'=>$model->Id));
+$this->tasksMenu[]=array('label'=>'Delete this account', 'icon'=>'trash white', 'url'=>array('delete','id'=>$model->Id));
 
 ?>
 
@@ -57,12 +57,12 @@ $this->tasksMenu[]=array('label'=>'Delete this account', 'icon'=>'trash', 'url'=
 			array(
 				'name' => 'PayeeId',
 				'type' => 'raw',
-				'value' => 'CHtml::link($data->relPayee->PayeeName,"/payee/view/id/$data->PayeeId")'
+				'value' => 'EMoney::payeeLink($data->relPayee)',
 			),
 			array(
 				'name' => 'SubCatId',
 				'type' => 'raw',
-				'value' => 'CHtml::link($data->relSubCat->getCatName($data->SubCatId).$data->relSubCat->SubCatName,"/subcat/view/id/$data->SubCatId")'
+				'value' => 'EMoney::subCatLink($data->relSubCat)',
 			),
 			array(
 				'name' => 'TransAmount',
