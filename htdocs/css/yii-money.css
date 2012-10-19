@@ -7,7 +7,7 @@
 
 
 /* General */
-body{padding-bottom: 40px;padding-top: 60px;}
+body{padding-bottom: 40px;padding-top: 80px;}
 
 a,a:focus{outline: none;}
 .search-button{margin-top: 10px;}
@@ -16,8 +16,8 @@ span.required{color:#ff0000;}
 
  /*Headings*/ 
 h2, h3, h4, h5, h6{margin:0 0 5px 0px}
-h1{font-size: 23px;line-height: 29px;margin: 0 0 20px;}
-h2{font-size: 21px;line-height: 21px;}
+h1{font-size: 27px;line-height: 29px;margin: 0 0 20px;}
+h2{font-size: 22px;line-height: 21px;}
 
 
  /*Detail View*/ 

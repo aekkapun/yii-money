@@ -30,7 +30,7 @@ class Controller extends CController
 	 */
 	public function initCss()
 	{
-		$cssFiles = array('yii-money','journal');
+		$cssFiles = array('journal','yii-money');
 		foreach ($cssFiles as $cssFile)
 			Yii::app()->clientScript->registerCssFile(Yii::app()->request->baseUrl . '/css/' . $cssFile . '.css', '');
 	}
