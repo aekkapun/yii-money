@@ -4,13 +4,10 @@ $this->breadcrumbs=array(
 	$model->PayeeName,
 );
 
-$this->menu=array(
-	array('label'=>'List Payees', 'url'=>array('index')),
-	array('label'=>'Create Payees', 'url'=>array('create')),
-	array('label'=>'Update Payees', 'url'=>array('update', 'id'=>$model->Id)),
-	array('label'=>'Delete Payees', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->Id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Payees', 'url'=>array('admin')),
-);
+$this->tasksMenu[]=array('label'=>'Payees Home', 'icon'=>'home', 'url'=>array('index'));
+$this->tasksMenu[]='---';
+$this->tasksMenu[]=array('label'=>'Add new payee', 'icon'=>'pencil', 'url'=>array('create'));
+$this->tasksMenu[]=array('label'=>'Edit this payee', 'icon'=>'edit', 'url'=>array('update','id'=>$model->Id));
 ?>
 
 <h1>Payee: <?php echo $model->PayeeName; ?></h1>
@@ -22,7 +19,7 @@ $this->menu=array(
 	$this->widget('bootstrap.widgets.TbGridView', array(
 		'type'=>'striped bordered condensed',
 		'id' => 'transactions-grid',
-		'dataProvider' => $transactionsModel->getAccountTransactions('PayeeId',$model->Id,'TransDate DESC'),
+		'dataProvider' => $transactionsModel->getAccountTransactions($model->Id),
 		'filter' => $transactionsModel,
 		'columns' => array(
 			array(
@@ -33,12 +30,12 @@ $this->menu=array(
 			array(
 				'name' => 'AccountId',
 				'type' => 'raw',
-				'value' => 'CHtml::link($data->relAccount->AccName,"/account/view/id/$data->AccountId")'
+				'value' => 'EMoney::accountLink($data->relAccount)'
 			),
 			array(
 				'name' => 'SubCatId',
 				'type' => 'raw',
-				'value' => 'CHtml::link($data->relSubCat->getCatName($data->SubCatId).$data->relSubCat->SubCatName,"/subcat/view/id/$data->SubCatId")'
+				'value' => 'EMoney::subCatLink($data->relSubCat)',
 			),
 			array(
 				'name' => 'TransAmount',

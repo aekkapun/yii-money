@@ -4,13 +4,10 @@ $this->breadcrumbs=array(
 	$model->Id,
 );
 
-$this->menu=array(
-	array('label'=>'List subCat', 'url'=>array('index')),
-	array('label'=>'Create subCat', 'url'=>array('create')),
-	array('label'=>'Update subCat', 'url'=>array('update', 'id'=>$model->Id)),
-	array('label'=>'Delete subCat', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->Id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage subCat', 'url'=>array('admin')),
-);
+$this->tasksMenu[]=array('label'=>'Category Home', 'icon'=>'home', 'url'=>array('index'));
+$this->tasksMenu[]='---';
+$this->tasksMenu[]=array('label'=>'Add new category', 'icon'=>'pencil', 'url'=>array('create'));
+$this->tasksMenu[]=array('label'=>'Edit this category', 'icon'=>'edit', 'url'=>array('update','id'=>$model->Id));
 ?>
 
 <h1><?php echo $model->SubCatName; ?></h1>

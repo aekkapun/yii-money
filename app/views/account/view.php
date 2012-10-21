@@ -4,11 +4,10 @@ $this->breadcrumbs=array(
 	$model->AccName,
 );
 
-$this->tasksMenu[]=array('label'=>'Accounts home', 'icon'=>'home white', 'url'=>array('index'));
+$this->tasksMenu[]=array('label'=>'Accounts home', 'icon'=>'home', 'url'=>array('index'));
 $this->tasksMenu[]='---';
-$this->tasksMenu[]=array('label'=>'Add a new account', 'icon'=>'pencil white', 'url'=>array('create'));
-$this->tasksMenu[]=array('label'=>'Edit this account', 'icon'=>'edit white', 'url'=>array('update','id'=>$model->Id));
-$this->tasksMenu[]=array('label'=>'Delete this account', 'icon'=>'trash white', 'url'=>array('delete','id'=>$model->Id));
+$this->tasksMenu[]=array('label'=>'Add new account', 'icon'=>'pencil', 'url'=>array('create'));
+$this->tasksMenu[]=array('label'=>'Edit this account', 'icon'=>'edit', 'url'=>array('update','id'=>$model->Id));
 
 ?>
 
@@ -46,7 +45,7 @@ $this->tasksMenu[]=array('label'=>'Delete this account', 'icon'=>'trash white', 
 	$this->widget('bootstrap.widgets.TbGridView', array(
 		'type'=>'striped bordered condensed',
 		'id' => 'transactions-grid',
-		'dataProvider' => $transactionsModel->getAccountTransactions('AccountId',$model->Id,'TransDate DESC'),
+		'dataProvider' => $transactionsModel->getAccountTransactions($model->Id),
 		'filter' => $transactionsModel,
 		'columns' => array(
 			array(

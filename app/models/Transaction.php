@@ -122,11 +122,11 @@ class Transaction extends CActiveRecord
 		return date($format, $this->transDateInt);
 	}
 	
-	public function getAccountTransactions($col,$id,$order)
+	public function getAccountTransactions($id)
 	{
 		$criteria=new CDbCriteria;
-		$criteria->condition = $col.'='.$id;
-		$criteria->order = $order;
+		$criteria->condition = 'AccountId='.$id;
+		$criteria->order = 'TransDate DESC';
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));

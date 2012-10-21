@@ -1,10 +1,5 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 class EMoney
 {
 	public static function subCatLink($subCat){
@@ -17,6 +12,13 @@ class EMoney
 	public static function payeeLink($payee){
 		if($payee)
 			return CHtml::link($payee->PayeeName,array('payee/view','id'=>$payee->Id));
+		else
+			return 'None';
+	}
+	
+	public static function accountLink($account){
+		if($account)
+			return CHtml::link($account->AccName,array('account/view','id'=>$account->Id));
 		else
 			return 'None';
 	}

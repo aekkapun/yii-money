@@ -2,9 +2,6 @@
 $this->breadcrumbs = array(
 	'Payees'
 );
-
-$this->tasksMenu[]=array('label'=>'Accounts Home', 'icon'=>'home', 'url'=>array('/account'));
-$this->tasksMenu[]='---';
 $this->tasksMenu[]=array('label'=>'New Payee', 'icon'=>'pencil', 'url'=>array('create'));
 
 Yii::app()->clientScript->registerScript('search', "
@@ -44,7 +41,11 @@ $('.search-form form').submit(function(){
 		'dataProvider' => $model->search(),
 		'filter' => $model,
 		'columns' => array(
-			'PayeeName',
+			array(
+				'name' => 'PayeeName',
+				'type' => 'raw',
+				'value' => 'EMoney::payeeLink($data)'
+			),
 			array(
 				'class'=>'bootstrap.widgets.TbButtonColumn',
 				'htmlOptions'=>array('style'=>'width: 50px'),

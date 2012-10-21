@@ -1,6 +1,5 @@
 <?php $this->beginContent('//layouts/main'); ?>
 <div class="span3">
-	
 	<!--Admin / Tasks menu-->
 	<?php if(!empty($this->tasksMenu)):?>
 		<div class="sidebar-nav">
@@ -11,7 +10,26 @@
 			?>	
 		</div>
 	<?php endif;?>
-	
+		<!--Accounts menu-->
+	<div class="sidebar-nav">
+		<?php
+		$this->widget('bootstrap.widgets.TbMenu', array(
+			'type' => 'list',
+			'items' => Account::model()->getAccountMenuItems()
+				)
+			);
+		?>
+	</div>
+		<!--Account Types menu-->
+	<div class="sidebar-nav">
+		<?php
+		$this->widget('bootstrap.widgets.TbMenu', array(
+			'type' => 'list',
+			'items' => AccType::model()->getAccountTypeMenuItems()
+				)
+			);
+		?>
+	</div>
 	<!--Custom menu-->
 	<?php if(!empty($this->menu)):?>
 		<div class="sidebar-nav">
@@ -22,18 +40,6 @@
 			?>	
 		</div>
 	<?php endif;?>
-	
-	<!--Accounts menu-->
-	<div class="sidebar-nav">
-		<?php
-		$this->widget('bootstrap.widgets.TbMenu', array(
-			'type' => 'list',
-			'items' => Account::model()->getAccountMenuItems()
-				)
-			);
-		?>
-	</div>
-	
 </div>
 <div class="span9">
 	<div class="row-fluid">

@@ -22,13 +22,13 @@
 					'items' => array(
 						array('label' => 'Transactions', 'url' => array('/transaction')),
 						
-						array('label' => 'Categories', 'url' => '#',
+						array('label' => 'Category', 'url' => '#',
 						'items' => array(
 							array('label'=>'Category Groups', 'url' => '/cat'),
 							array('label'=>'Categories', 'url' => '/subcat')
 						)),
 						array('label' => 'Accounts', 'url' => '#',
-							'items' => AccType::model()->getAccountTypeMenuItems(true)),
+							'items' => AccType::model()->getAccountTypeMenuItems(false)),
 						array('label' => 'Payees', 'url' => array('/payee')),
 						array('label' => 'Login', 'url' => array('admin/login'), 'visible' => Yii::app()->user->isGuest),
 					),

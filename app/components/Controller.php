@@ -15,7 +15,7 @@ class Controller extends CController
 	 * @var array context menu items. This property will be assigned to {@link CMenu::items}.
 	 */
 	public $menu = array();
-	public $tasksMenu = array(array('label'=>'Administrate'));
+	public $tasksMenu = array();
 	
 	/**
 	 * @var array the breadcrumbs of the current page. The value of this property will
@@ -30,7 +30,12 @@ class Controller extends CController
 	 */
 	public function initCss()
 	{
-		$cssFiles = array('cyborg','yii-money','bootstrap-responsive');
+//		$cssFiles = array('united','yii-money','bootstrap-responsive');
+//		$cssFiles = array('spacelab','yii-money','bootstrap-responsive');
+		$cssFiles = array('journal','yii-money','bootstrap-responsive');
+//		$cssFiles = array('slate','yii-money','bootstrap-responsive');
+//		$cssFiles = array('cerulean','yii-money','bootstrap-responsive');
+//		$cssFiles = array('cyborg','yii-money','bootstrap-responsive');
 		foreach ($cssFiles as $cssFile)
 			Yii::app()->clientScript->registerCssFile(Yii::app()->request->baseUrl . '/css/' . $cssFile . '.css', '');
 	}

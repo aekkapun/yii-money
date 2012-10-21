@@ -3,9 +3,9 @@ $this->breadcrumbs=array(
 	'Account Types'
 );
 
-$this->tasksMenu[]=array('label'=>'Accounts Home', 'icon'=>'home', 'url'=>array('/account'));
-$this->tasksMenu[]='---';
-$this->tasksMenu[]=array('label'=>'New Account Type', 'icon'=>'pencil', 'url'=>array('create'));
+$this->tasksMenu[]=array('label'=>'Add New Account type', 'icon'=>'pencil', 'url'=>array('create'));
+$this->tasksMenu[]=array('label'=>'Edit account type', 'icon'=>'edit', 'url'=>array('update','id'=>$model->Id));
+$this->tasksMenu[]=array('label'=>'Delete account type', 'icon'=>'trash', 'url'=>array('delete','id'=>$model->Id));
 
 Yii::app()->clientScript->registerScript('search', "
 $('.search-button').click(function(){
@@ -35,17 +35,16 @@ $('.search-form form').submit(function(){
 
 <div class="row-fluid">
 	<?php
-	$this->widget('zii.widgets.grid.CGridView', array(
+	$this->widget('bootstrap.widgets.TbGridView', array(
+		'type'=>'striped bordered condensed',
 		'id' => 'acc-type-grid',
 		'dataProvider' => $model->search(),
 		'filter' => $model,
 		'columns' => array(
 			'AccTypeName',
 			array(
-				'class' => 'CButtonColumn',
-				'deleteButtonImageUrl' => Yii::app()->baseUrl.'/images/form-reset.png',
-				'updateButtonImageUrl' => Yii::app()->baseUrl.'/images/form-edit.png',
-				'viewButtonImageUrl' => Yii::app()->baseUrl.'/images/form-submit.png',
+				'class'=>'bootstrap.widgets.TbButtonColumn',
+				'htmlOptions'=>array('style'=>'width: 50px'),
 			),
 		),
 	));
