@@ -22,4 +22,15 @@ class EMoney
 		else
 			return 'None';
 	}
+	
+	public static function isWithdrawal($amount){
+		if($amount < 0)
+//			return Yii::app()->numberFormatter->format($amount,Yii::app()->params->currency);
+			return Yii::app()->numberFormatter->formatCurrency($amount,Yii::app()->params->currency);
+	}
+	
+	public static function isDeposit($amount){
+		if($amount > 0)
+			return Yii::app()->numberFormatter->formatCurrency($amount,Yii::app()->params->currency);
+	}
 }

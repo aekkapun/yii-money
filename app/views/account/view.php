@@ -52,7 +52,6 @@ $this->tasksMenu[]=array('label'=>'Edit this account', 'icon'=>'edit', 'url'=>ar
 				'name' => 'TransDate',
 				'value' => 'date("M j, Y", $data->transDateInt)',
 			),
-			'TransType',
 			array(
 				'name' => 'PayeeId',
 				'type' => 'raw',
@@ -64,8 +63,16 @@ $this->tasksMenu[]=array('label'=>'Edit this account', 'icon'=>'edit', 'url'=>ar
 				'value' => 'EMoney::subCatLink($data->relSubCat)',
 			),
 			array(
-				'name' => 'TransAmount',
-				'value' => 'Yii::app()->numberFormatter->formatCurrency($data->TransAmount,Yii::app()->params->currency)',
+				'header' => 'In',
+				'value' => 'EMoney::isDeposit($data->TransAmount)',
+			),
+			array(
+				'header' => 'Out',
+				'value' => 'EMoney::isWithdrawal($data->TransAmount)',
+			),
+			array(
+				'header' => 'Balance',
+				'value' => '',
 			),
 			array(
 				'class'=>'bootstrap.widgets.TbButtonColumn',
