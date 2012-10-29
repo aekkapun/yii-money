@@ -65,14 +65,17 @@ $this->tasksMenu[]=array('label'=>'Edit this account', 'icon'=>'edit', 'url'=>ar
 			array(
 				'header' => 'In',
 				'value' => 'EMoney::isDeposit($data->TransAmount)',
+				'htmlOptions'=>array('class'=>'green'),
 			),
 			array(
 				'header' => 'Out',
 				'value' => 'EMoney::isWithdrawal($data->TransAmount)',
+				'htmlOptions'=>array('class'=>'red'),
 			),
 			array(
-				'header' => 'Balance',
-				'value' => '',
+				'header'    => 'Balance',
+				'class'     => 'TotalColumn',
+				'attribute' => 'TransAmount',
 			),
 			array(
 				'class'=>'bootstrap.widgets.TbButtonColumn',
@@ -82,3 +85,7 @@ $this->tasksMenu[]=array('label'=>'Edit this account', 'icon'=>'edit', 'url'=>ar
 	));
 	?>
 </div>
+
+<!--TODO
+Work out the best way of getting a running balance for a row, possibly have a custom function in the transactions model "getRunningBalance"
+-->

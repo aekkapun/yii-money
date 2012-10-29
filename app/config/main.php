@@ -9,7 +9,10 @@ return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'defaultController' => 'Account',
 	'name'=>'Yii money',
-
+	
+	'language'=>'en_gb',
+	'sourceLanguage'=>'en_gb',
+	
 	// preloading 'log' component
 	'preload'=>array(
 		'log',

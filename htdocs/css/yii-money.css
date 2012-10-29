@@ -14,6 +14,9 @@ a,a:focus{outline: none;}
 
 span.required{color:#ff0000;}
 
+.green{color: #03bd03}
+.red{color: #ff0000}
+
  /*Headings*/ 
 h2, h3, h4, h5, h6{margin:0 0 5px 0px}
 h1{font-size: 27px;line-height: 29px;margin: 0 0 20px;}
