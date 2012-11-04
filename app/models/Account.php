@@ -103,7 +103,7 @@ class Account extends CActiveRecord
 	public function getAccountMenuItems($heading = true, $headingText = 'Accounts') 
 	{
 		$menuItems = array();
-		$menuItems[] = array('label'=>'Accounts');
+//		$menuItems[] = array('label'=>'Accounts');
 		foreach ($this->findAll() as $account)
 			$menuItems[] = array('label' => $account->AccName,'url' => array('account/view', 'id' => $account->Id));
 		return $menuItems;

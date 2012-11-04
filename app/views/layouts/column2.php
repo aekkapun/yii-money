@@ -1,57 +1,52 @@
 <?php $this->beginContent('//layouts/main'); ?>
-<div class="span3">
-	<!--Admin / Tasks menu-->
-	<?php if(!empty($this->tasksMenu)):?>
-		<div class="sidebar-nav">
-			<?php $this->widget('bootstrap.widgets.TbMenu', array(
-				'type'=>'list',
-				'items'=>$this->tasksMenu
-			));
-			?>	
-		</div>
-	<?php endif;?>
-		<!--Accounts menu-->
-	<div class="sidebar-nav">
-		<?php
-		$this->widget('bootstrap.widgets.TbMenu', array(
-			'type' => 'list',
-			'items' => Account::model()->getAccountMenuItems()
-				)
-			);
-		?>
-	</div>
-		<!--Account Types menu-->
-	<div class="sidebar-nav">
-		<?php
-		$this->widget('bootstrap.widgets.TbMenu', array(
-			'type' => 'list',
-			'items' => AccType::model()->getAccountTypeMenuItems()
-				)
-			);
-		?>
-	</div>
-	<!--Custom menu-->
-	<?php if(!empty($this->menu)):?>
-		<div class="sidebar-nav">
-			<?php $this->widget('bootstrap.widgets.TbMenu', array(
-				'type'=>'list',
-				'items'=>$this->menu
-			));
-			?>	
-		</div>
-	<?php endif;?>
+<div id="sidebar">
+	<!--Accounts menu-->
+	<?php
+	$this->widget('zii.widgets.CMenu', array(
+		'items' => Account::model()->getAccountMenuItems(),
+			)
+		);
+	?>
 </div>
-<div class="span9">
-	<div class="row-fluid">
-		<?php if (isset($this->breadcrumbs)): ?>
-			<?php
-			$this->widget('bootstrap.widgets.TbBreadcrumbs', array(
-				'links' => $this->breadcrumbs,
-			));
-			?><!-- breadcrumbs -->
-		<?php endif ?>	
+<div id="content">
+	
+	<div id="content-header">
+		<h1><?php echo $this->viewHeading;?></h1>
+		<div class="btn-group">
+
+			<!--Admin / Tasks menu-->
+			<?php // if(!empty($this->tasksMenu)):?>
+<!--						<?php // $this->widget('bootstrap.widgets.TbMenu', array(
+//							'type'=>'list',
+//							'items'=>$this->tasksMenu,
+//							'htmlOptions'=>array(
+//								'class'=>'sidebar-nav'
+//							),
+//						));
+					?>	-->
+			<?php // endif;?>
+
+			<a class="btn btn-large tip-bottom" title="Add new account"><i class="icon-plus"></i></a>
+			<a class="btn btn-large tip-bottom" title="Edit this account"><i class="icon-edit"></i></a>
+		</div>
 	</div>
-	<?php echo $content; ?>
+	
+	<?php if (isset($this->breadcrumbs)): ?>
+		<?php
+		$this->widget('zii.widgets.CBreadcrumbs', array(
+			'separator'=>'',
+			'links' => $this->breadcrumbs,
+			'htmlOptions'=>array(
+				'id'=>'breadcrumb'
+			),
+		));
+		?><!-- breadcrumbs -->
+	<?php endif ?>
+	
+	<div class="container-fluid">
+		<?php echo $content; ?>
+	</div>
+		
 </div>
 <?php $this->endContent(); ?>
 

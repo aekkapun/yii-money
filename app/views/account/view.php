@@ -1,21 +1,20 @@
 <?php
+// Set breadcrumbs
 $this->breadcrumbs=array(
 	'Accounts'=>array('index'),
 	$model->AccName,
 );
 
-$this->tasksMenu[]=array('label'=>'Accounts home', 'icon'=>'home', 'url'=>array('index'));
-$this->tasksMenu[]='---';
+// Add available tasks / actions
 $this->tasksMenu[]=array('label'=>'Add new account', 'icon'=>'pencil', 'url'=>array('create'));
 $this->tasksMenu[]=array('label'=>'Edit this account', 'icon'=>'edit', 'url'=>array('update','id'=>$model->Id));
 
+// Set view haeading
+$this->viewHeading = $model->AccName;
+
 ?>
 
-
-
 <div class="row-fluid">
-	<h1>Account Details: <?php echo $model->AccName; ?></h1>
-
 	<?php
 	$this->widget('bootstrap.widgets.TbDetailView', array(
 		'type'=>'striped bordered condensed',
@@ -38,6 +37,7 @@ $this->tasksMenu[]=array('label'=>'Edit this account', 'icon'=>'edit', 'url'=>ar
 </div>
 
 
+<<<<<<< HEAD
 <div class="row-fluid row-transactions-grid">
 	<h2>Transactions</h2>
 	<?php
@@ -89,3 +89,51 @@ $this->tasksMenu[]=array('label'=>'Edit this account', 'icon'=>'edit', 'url'=>ar
 <!--TODO
 Work out the best way of getting a running balance for a row, possibly have a custom function in the transactions model "getRunningBalance"
 -->
+=======
+<div class="row-fluid">
+	<div class="span12">
+		<div class="widget-box">
+			<div class="widget-title">
+				<h5>Transactions</h5>
+			</div>
+			<div class="widget-content nopadding">
+				<?php
+				$transactionsModel = Transaction::model();
+				$this->widget('bootstrap.widgets.TbGridView', array(
+					'type'=>'striped bordered condensed',
+					'id' => 'transactions-grid',
+//					'htmlOptions'=>array('class'=>'dataTables_wrapper'),
+					'dataProvider' => $transactionsModel->getAccountTransactions($model->Id),
+					'filter' => $transactionsModel,
+					'columns' => array(
+						array(
+							'name' => 'TransDate',
+							'value' => 'date("M j, Y", $data->transDateInt)',
+						),
+						'TransType',
+						array(
+							'name' => 'PayeeId',
+							'type' => 'raw',
+							'value' => 'EMoney::payeeLink($data->relPayee)',
+						),
+						array(
+							'name' => 'SubCatId',
+							'type' => 'raw',
+							'value' => 'EMoney::subCatLink($data->relSubCat)',
+						),
+						array(
+							'name' => 'TransAmount',
+							'value' => 'Yii::app()->numberFormatter->formatCurrency($data->TransAmount,Yii::app()->params->currency)',
+						),
+						array(
+							'class'=>'bootstrap.widgets.TbButtonColumn',
+							'htmlOptions'=>array('style'=>'width: 50px'),
+						),
+					),
+				));
+				?>			
+			</div>
+		</div>
+	</div>
+</div>
+>>>>>>> Added unicorn theme

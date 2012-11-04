@@ -10,6 +10,7 @@ class Controller extends CController
 	 * meaning using a single column layout. See 'protected/views/layouts/column1.php'.
 	 */
 	public $layout = '//layouts/column1';
+	public $viewHeading = '';
 	
 	/**
 	 * @var array context menu items. This property will be assigned to {@link CMenu::items}.
@@ -26,25 +27,37 @@ class Controller extends CController
 	
 	
 	/**
-	 * Add CSS and JS after yii assets
+	 * Add CSS after yii assets
 	 */
 	public function initCss()
 	{
-//		$cssFiles = array('united','yii-money','bootstrap-responsive');
-//		$cssFiles = array('spacelab','yii-money','bootstrap-responsive');
-		$cssFiles = array('journal','yii-money','bootstrap-responsive');
-//		$cssFiles = array('slate','yii-money','bootstrap-responsive');
-//		$cssFiles = array('cerulean','yii-money','bootstrap-responsive');
-//		$cssFiles = array('cyborg','yii-money','bootstrap-responsive');
+		$cssFiles = array(
+			'fullcalendar',
+			'unicorn.main',
+			'unicorn.grey',
+			'yii-money'
+		);
 		foreach ($cssFiles as $cssFile)
 			Yii::app()->clientScript->registerCssFile(Yii::app()->request->baseUrl . '/css/' . $cssFile . '.css', '');
 	}
 
+	/**
+	 * Add JS after yii assets
+	 */
 	public function initJs()
 	{
-//		$jsFiles = array('bootstrap-tabs');
-//		foreach($jsFiles as $jsFile){
-//			Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/js/'.$jsFile.'.js', '');
-//		}
+		$jsFiles = array(
+			'excanvas.min',
+			'jquery.ui.custom',
+			'jquery.flot.min',
+			'jquery.flot.resize.min',
+			'jquery.peity.min',
+			'fullcalendar.min',
+			'unicorn',
+			'unicorn.dashboard'
+		);
+		foreach($jsFiles as $jsFile){
+			Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/js/'.$jsFile.'.js', '');
+		}
 	}
 }
