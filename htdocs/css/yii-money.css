@@ -15,12 +15,10 @@
  /*Headings*/ 
 /*h2, h3, h4, h5, h6{margin:0 0 5px 0px}
 h1{font-size: 27px;line-height: 29px;margin: 0 0 20px;}
-h2{font-size: 22px;line-height: 21px;}*/
+h2{font-size: 22px;line-height: 21px;}
 
 
- /*Detail View*/ 
-/*table.detail-view{margin: 0 0 30px;font-size: 15px;}
-
+*/
 .form{overflow: hidden;}
 .form .control-group{width:270px;height:80px;float: left;margin:0px;}
 .form .control-group.wide {clear: both;float: none;height: 40px;width: auto;}
@@ -35,7 +33,9 @@ h2{font-size: 22px;line-height: 21px;}*/
 .form-tabs{width: 845px;}
 .action-buttons{overflow: hidden;}
 .action-buttons .btn{margin: 0 0 0 10px;}
-.action-buttons *{float: right;overflow: hidden;}*/
+.action-buttons *{float: right;overflow: hidden;}
 
+ /*Detail View*/ 
+table.detail-view th{text-align: left;font-size: 14px;}
 
 #breadcrumb span{color: #444444;font-weight: bold;display: inline-block;font-size: 11px;padding: 8px 20px 8px 10px;}

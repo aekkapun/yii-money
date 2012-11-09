@@ -122,15 +122,39 @@ class Transaction extends CActiveRecord
 		return date($format, $this->transDateInt);
 	}
 	
-	public function getAccountTransactions($id)
+	
+	
+	
+	public function getAccountTransactions($accountId)
 	{
 		$criteria=new CDbCriteria;
-		$criteria->condition = 'AccountId='.$id;
+		$criteria->condition = 'AccountId='.$accountId;
 		$criteria->order = 'TransDate DESC';
+
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
-		));
+		));		
 	}
+	
+	
+	/**
+	 * @desc Function to return an JSON array of transactions by account Id transactions
+	 * @param int $acccountId, account Id
+	 * @return array JSON 
+	 */	
+	public function getAccountCashflowJson($accountId)
+	{
+		
+		$criteria=new CDbCriteria;
+		$criteria->condition = 'AccountId='.$accountId;
+		$criteria->order = 'TransDate DESC';
+		$transactions = $this->findAll($criteria);
+		
+		return CJSON::encode($transactions);
+	  
+	}
+
+	
 	
 	
 	public function getAccountTypeTransactions($id)
@@ -144,7 +168,7 @@ class Transaction extends CActiveRecord
 		
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
-		));
+		));		
 	}
 	
 

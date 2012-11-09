@@ -63,7 +63,7 @@ class TransactionController extends Controller
 		$model = new Transaction;
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+//		 $this->performAjaxValidation($model);
 
 		if (isset($_POST['Transaction'])) {
 			if ($_POST['Transaction']['TransType'] == 'Withdrawal') {
@@ -159,6 +159,8 @@ class TransactionController extends Controller
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
 	}
+	
+
 
 	/**
 	 * Performs the AJAX validation.

@@ -13,104 +13,97 @@ $this->tasksMenu[]=array('label'=>'Edit this account', 'icon'=>'edit', 'url'=>ar
 $this->viewHeading = $model->AccName;
 
 ?>
-
 <div class="row-fluid">
-	<?php
-	$this->widget('bootstrap.widgets.TbDetailView', array(
-		'type'=>'striped bordered condensed',
-		'data' => $model,
-		'attributes' => array(
-			'AccName',
-			array
-				(
-				'name' => 'AccTypeId',
-				'value' => $model->relAccType->AccTypeName,
-			),
-			array
-				(
-				'name' => 'OverDraftLimit',
-				'value' => '-'.$model->OverDraftLimit,
-			),
-		),
-	));
-	?>
+	<div class="span12">
+		<div class="widget-box">
+			<div class="widget-content">
+				<div class="row-fluid">
+				<div class="span4">
+						<div class="widget-content">
+							<h5>Account type: <?php echo $model->relAccType->AccTypeName;?></h5>
+							<h5>Limit: <?php echo '-'.EMoney::formatAmount($model->OverDraftLimit);?>
+						</div>
+				</div>
+				<div class="span8">
+					<div class="well">
+						<div id="container" style="min-width: 400px; height: 200px; margin: 0 auto"></div>
+					</div>
+				</div>	
+				</div>							
+			</div>
+		</div>					
+	</div>
 </div>
 
+<?php
+$transactionsModel = Transaction::model();
+$dataProvider = $transactionsModel->getAccountTransactions($model->Id);
+$chartData = $transactionsModel->getAccountCashflowJson($model->Id);
+?>
+<?php // echo '<pre>'.print_r($chartData,true).'<\pre>' ;?>
 
-<<<<<<< HEAD
-<div class="row-fluid row-transactions-grid">
-	<h2>Transactions</h2>
-	<?php
-	$transactionsModel = Transaction::model();
-	$this->widget('bootstrap.widgets.TbGridView', array(
-		'type'=>'striped bordered condensed',
-		'id' => 'transactions-grid',
-		'dataProvider' => $transactionsModel->getAccountTransactions($model->Id),
-		'filter' => $transactionsModel,
-		'columns' => array(
-			array(
-				'name' => 'TransDate',
-				'value' => 'date("M j, Y", $data->transDateInt)',
-			),
-			array(
-				'name' => 'PayeeId',
-				'type' => 'raw',
-				'value' => 'EMoney::payeeLink($data->relPayee)',
-			),
-			array(
-				'name' => 'SubCatId',
-				'type' => 'raw',
-				'value' => 'EMoney::subCatLink($data->relSubCat)',
-			),
-			array(
-				'header' => 'In',
-				'value' => 'EMoney::isDeposit($data->TransAmount)',
-				'htmlOptions'=>array('class'=>'green'),
-			),
-			array(
-				'header' => 'Out',
-				'value' => 'EMoney::isWithdrawal($data->TransAmount)',
-				'htmlOptions'=>array('class'=>'red'),
-			),
-			array(
-				'header'    => 'Balance',
-				'class'     => 'TotalColumn',
-				'attribute' => 'TransAmount',
-			),
-			array(
-				'class'=>'bootstrap.widgets.TbButtonColumn',
-				'htmlOptions'=>array('style'=>'width: 50px'),
-			),
-		),
-	));
-	?>
-</div>
+<script>
+	jQuery(function($){
+		window.data = <?php echo $chartData;?>;
+		window.chartData = new Array()
+		
+		$.each(window.data, function(i,chartItem){
+			chartItem = [chartItem.TransDate,parseFloat(chartItem.TransAmount)];
+			window.chartData.push(chartItem); 
+		});
+			
+			
+        chart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'container',
+                type: 'area'
+            },
+            title: {
+                text: 'Account balance history'
+            },
+            xAxis: {
+				
+            },
+            yAxis: {
+				
+            },
+            tooltip: {
+                formatter: function() {
+                    return '£'+ this.y;
+                }
+            },
+            credits: {
+                enabled: false
+            },
+            series: [{
+                name: 'Date',
+                data: window.chartData
+            }]
+        });
+	});
+</script>
 
-<!--TODO
-Work out the best way of getting a running balance for a row, possibly have a custom function in the transactions model "getRunningBalance"
--->
-=======
 <div class="row-fluid">
 	<div class="span12">
 		<div class="widget-box">
 			<div class="widget-title">
+				<span class="icon"><i class="icon icon-barcode"></i></span>
 				<h5>Transactions</h5>
 			</div>
-			<div class="widget-content nopadding">
+			<div class="widget-content">
 				<?php
-				$transactionsModel = Transaction::model();
+				
 				$this->widget('bootstrap.widgets.TbGridView', array(
 					'type'=>'striped bordered condensed',
-					'id' => 'transactions-grid',
-//					'htmlOptions'=>array('class'=>'dataTables_wrapper'),
-					'dataProvider' => $transactionsModel->getAccountTransactions($model->Id),
+					'id' => 'account-transactions-grid',
+					'dataProvider' => $dataProvider,
 					'filter' => $transactionsModel,
+					'pagerCssClass' =>'pagination alternate',
 					'columns' => array(
 						array(
 							'name' => 'TransDate',
 							'value' => 'date("M j, Y", $data->transDateInt)',
 						),
-						'TransType',
 						array(
 							'name' => 'PayeeId',
 							'type' => 'raw',
@@ -122,8 +115,19 @@ Work out the best way of getting a running balance for a row, possibly have a cu
 							'value' => 'EMoney::subCatLink($data->relSubCat)',
 						),
 						array(
-							'name' => 'TransAmount',
-							'value' => 'Yii::app()->numberFormatter->formatCurrency($data->TransAmount,Yii::app()->params->currency)',
+							'header' => 'Depost',
+							'value' => 'EMoney::isDeposit($data->TransAmount)',
+							'htmlOptions'=>array('class'=>'green'),
+						),
+						array(
+							'header' => 'Withdrawal',
+							'value' => 'EMoney::isWithdrawal($data->TransAmount)',
+							'htmlOptions'=>array('class'=>'red'),
+						),
+						array(
+							'header'    => 'Balance',
+							'class'     => 'TotalColumn',
+							'attribute' => 'TransAmount',
 						),
 						array(
 							'class'=>'bootstrap.widgets.TbButtonColumn',
@@ -136,4 +140,3 @@ Work out the best way of getting a running balance for a row, possibly have a cu
 		</div>
 	</div>
 </div>
->>>>>>> Added unicorn theme

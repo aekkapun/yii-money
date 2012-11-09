@@ -10,6 +10,10 @@ class Controller extends CController
 	 * meaning using a single column layout. See 'protected/views/layouts/column1.php'.
 	 */
 	public $layout = '//layouts/column1';
+	
+	/**
+	 * @var string the content header title,
+	 */
 	public $viewHeading = '';
 	
 	/**
@@ -32,32 +36,32 @@ class Controller extends CController
 	public function initCss()
 	{
 		$cssFiles = array(
+			'uniform',
+			'chosen',
 			'fullcalendar',
 			'unicorn.main',
 			'unicorn.grey',
 			'yii-money'
 		);
 		foreach ($cssFiles as $cssFile)
-			Yii::app()->clientScript->registerCssFile(Yii::app()->request->baseUrl . '/css/' . $cssFile . '.css', '');
+			Yii::app()->clientScript->registerCssFile(Yii::app()->request->baseUrl . '/css/' . $cssFile . '.css');
 	}
-
+	
 	/**
 	 * Add JS after yii assets
 	 */
 	public function initJs()
 	{
 		$jsFiles = array(
-			'excanvas.min',
 			'jquery.ui.custom',
-			'jquery.flot.min',
-			'jquery.flot.resize.min',
-			'jquery.peity.min',
-			'fullcalendar.min',
 			'unicorn',
-			'unicorn.dashboard'
+			'highcharts',
+			'highcharts-more',
+			'exporting',
+			'yii-money'
 		);
 		foreach($jsFiles as $jsFile){
-			Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/js/'.$jsFile.'.js', '');
+			Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/js/'.$jsFile.'.js');
 		}
 	}
 }

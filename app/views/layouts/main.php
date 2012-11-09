@@ -9,64 +9,40 @@
 	</head>
 	<body class="<?php echo Yii::app()->controller->action->id; ?>">
 		<div id="header">
-			<h1><a href="<?php echo Yii::app()->homeUrl;?>">Yii Personal Finance</a></h1>		
+			<h1><a href="<?php echo Yii::app()->homeUrl;?>">Yii Money</a></h1>		
 		</div>
 		
-<!--		<div id="user-nav" class="navbar navbar-inverse">
+		<div id="user-nav" class="navbar navbar-inverse">
             <ul class="nav btn-group">
-                <li class="btn btn-inverse" ><a title="" href="/payee"><i class="icon icon-user"></i> <span class="text">Payees</span></a></li>
-                <li class="btn btn-inverse dropdown" id="menu-messages"><a href="#" data-toggle="dropdown" data-target="#menu-messages" class="dropdown-toggle"><i class="icon icon-envelope"></i> <span class="text">Messages</span> <span class="label label-important">5</span> <b class="caret"></b></a>
+                <li class="btn btn-inverse" ><a title="" href="/transaction"><i class="icon icon-barcode"></i> <span class="text">Transactions</span></a></li>
+                <li class="btn btn-inverse dropdown" id="menu-messages"><a href="#" data-toggle="dropdown" data-target="#menu-messages" class="dropdown-toggle"><i class="icon icon-star"></i> <span class="text">Favorite Accounts</span> <b class="caret"></b></a>
+                <!--<li class="btn btn-inverse dropdown" id="menu-messages"><a href="#" data-toggle="dropdown" data-target="#menu-messages" class="dropdown-toggle"><i class="icon icon-star"></i> <span class="text">Favorite Accounts</span> <span class="label label-success">3</span> <b class="caret"></b></a>-->
                     <ul class="dropdown-menu">
-                        <li><a class="sAdd" title="" href="#">new message</a></li>
-                        <li><a class="sInbox" title="" href="#">inbox</a></li>
-                        <li><a class="sOutbox" title="" href="#">outbox</a></li>
-                        <li><a class="sTrash" title="" href="#">trash</a></li>
+                        <li><a class="sAdd" title="" href="#">First Direct Current Account</a></li>
+                        <li><a class="sAdd" title="" href="#">Natwest Joint Account</a></li>
+                        <li><a class="sAdd" title="" href="#">Barclay Card</a></li>
                     </ul>
                 </li>
                 <li class="btn btn-inverse"><a title="" href="#"><i class="icon icon-cog"></i> <span class="text">Settings</span></a></li>
                 <li class="btn btn-inverse"><a title="" href="login.html"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
             </ul>
-        </div>-->
-		
-		<?php $this->widget('bootstrap.widgets.TbNavbar', array(
-			'type'=>'inverse', // null or 'inverse'
-			'fixed'=>null,
-			'brand'=>false,
-			'htmlOptions'=>array(
-				'id'=>'user-nav',
-			),
-			'items'=>array(
-				array(
-					'class'=>'bootstrap.widgets.TbMenu',
-					'htmlOptions' => array('class' => 'btn-group'),
-					'items' => array(
-						array('label' => 'Transactions', 'url' => array('/transaction'),
-							'htmlOptions' => array('class'=>'btn btn-inverse'),
-						),
-						
-						array('label' => 'Category', 'url' => '#',
-							'htmlOptions' => array('class'=>'btn btn-inverse','htmlOptions' => array('class'=>'btn btn-inverse'),),
-							'items' => array(
-								array('label'=>'Category Groups', 'url' => '/cat'),
-								array('label'=>'Categories', 'url' => '/subcat')
-						)),
-						array('label' => 'Accounts', 'url' => '#',
-							'items' => AccType::model()->getAccountTypeMenuItems(false)),
-						array('label' => 'Payees', 'url' => array('/payee')),
-						array('label' => 'Login', 'url' => array('admin/login'), 'visible' => Yii::app()->user->isGuest),
-					),
-				),
-//				array(
-//					'class'=>'bootstrap.widgets.TbMenu',
-//					'htmlOptions'=>array('class'=>'pull-right'),
-//					'items'=>array(
-//						array('label'=>Yii::app()->user->name, 'url'=>'#', 'items'=>array(
-//							array('label'=>'Logout', 'url' => array('admin/logout'), 'visible' => !Yii::app()->user->isGuest),
-//						)),
-//					),
+        </div>
+<!--		<div id="user-nav" class="navbar navbar-inverse">
+			<?php
+//			$this->widget('zii.widgets.CMenu', array(
+//				'htmlOptions' => array(
+//					'class' => 'nav btn-group'
 //				),
-			),
-		)); ?>
+//				'encodeLabel' => false,
+//				'items' => array(
+//					array('label' => '<i class="icon icon-book"></i><span>Accounts</span>', 'url' => '#',
+//						'linkOptions' => array('class' => 'btn btn-inverse dropdown'),
+//						'items' => AccType::model()->getAccountTypeMenuItems(false)),
+////						'submenuHtmlOptions' => array('class' => 'dropdown-menu'),
+//				)
+//			));
+			?>
+        </div>-->
 		
 		<?php echo $content; ?>
 	</body>
