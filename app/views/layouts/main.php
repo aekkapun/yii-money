@@ -27,6 +27,8 @@
                 <li class="btn btn-inverse"><a title="" href="login.html"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
             </ul>
         </div>
+		
+		
 <!--		<div id="user-nav" class="navbar navbar-inverse">
 			<?php
 //			$this->widget('zii.widgets.CMenu', array(

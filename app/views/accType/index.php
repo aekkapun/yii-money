@@ -3,9 +3,8 @@ $this->breadcrumbs=array(
 	'Account Types'
 );
 
-$this->tasksMenu[]=array('label'=>'Add New Account type', 'icon'=>'pencil', 'url'=>array('create'));
-$this->tasksMenu[]=array('label'=>'Edit account type', 'icon'=>'edit', 'url'=>array('update','id'=>$model->Id));
-$this->tasksMenu[]=array('label'=>'Delete account type', 'icon'=>'trash', 'url'=>array('delete','id'=>$model->Id));
+// Add available tasks / actions
+$this->tasksMenu=array('create');
 
 Yii::app()->clientScript->registerScript('search', "
 $('.search-button').click(function(){

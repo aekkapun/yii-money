@@ -3,10 +3,6 @@ $this->breadcrumbs = array(
 	'Transactions'
 );
 
-$this->tasksMenu[]=array('label'=>'Accounts Home', 'icon'=>'home', 'url'=>array('/account'));
-$this->tasksMenu[]='---';
-$this->tasksMenu[]=array('label'=>'New Transaction', 'icon'=>'pencil', 'url'=>array('create'));
-
 Yii::app()->clientScript->registerScript('search', "
 	$('.search-button').click(function(){
 		$('.search-form').slideToggle();

@@ -4,10 +4,8 @@ $this->breadcrumbs=array(
 	$model->Id,
 );
 
-$this->tasksMenu[]=array('label'=>'Transactions Home', 'icon'=>'home', 'url'=>array('index'));
-$this->tasksMenu[]='---';
-$this->tasksMenu[]=array('label'=>'Add new Transaction', 'icon'=>'pencil', 'url'=>array('create'));
-$this->tasksMenu[]=array('label'=>'Edit this Transaction', 'icon'=>'edit', 'url'=>array('update','id'=>$model->Id));
+// Add available tasks / actions
+$this->tasksMenu=array('create','update','delete');
 
 $this->menu=array(
 	array('label'=>'List Transactions', 'url'=>array('index')),

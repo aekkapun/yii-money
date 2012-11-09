@@ -4,12 +4,8 @@ $this->breadcrumbs=array(
 	$model->Id,
 );
 
-$this->menu=array(
-	array('label'=>'List Cats', 'url'=>array('index')),
-	array('label'=>'Create Cats', 'url'=>array('create')),
-	array('label'=>'Update Cats', 'url'=>array('update', 'id'=>$model->Id)),
-	array('label'=>'Delete Cats', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->Id),'confirm'=>'Are you sure you want to delete this item?')),
-);
+// Add available tasks / actions
+$this->tasksMenu=array('create');
 ?>
 
 <h1>View Cats #<?php echo $model->Id; ?></h1>

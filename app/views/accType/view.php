@@ -4,8 +4,8 @@ $this->breadcrumbs=array(
 	$model->AccTypeName.'s',
 );
 
-$this->tasksMenu[]=array('label'=>'Add New Account type', 'icon'=>'pencil', 'url'=>array('create'));
-$this->tasksMenu[]=array('label'=>'Edit this account type', 'icon'=>'edit', 'url'=>array('update','id'=>$model->Id));
+// Add available tasks / actions
+$this->tasksMenu=array('create','update','delete');
 
 
 // Set view haeading

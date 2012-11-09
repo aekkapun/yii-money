@@ -3,7 +3,8 @@ $this->breadcrumbs=array(
 	'Accounts'
 );
 
-$this->tasksMenu[]=array('label'=>'New Account', 'icon'=>'pencil', 'url'=>array('create'));
+// Add available tasks / actions
+$this->tasksMenu=array('create');
 
 Yii::app()->clientScript->registerScript('search', "
 $('.search-button').click(function(){

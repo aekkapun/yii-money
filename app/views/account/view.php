@@ -6,8 +6,7 @@ $this->breadcrumbs=array(
 );
 
 // Add available tasks / actions
-$this->tasksMenu[]=array('label'=>'Add new account', 'icon'=>'pencil', 'url'=>array('create'));
-$this->tasksMenu[]=array('label'=>'Edit this account', 'icon'=>'edit', 'url'=>array('update','id'=>$model->Id));
+$this->tasksMenu=array('create','update');
 
 // Set view haeading
 $this->viewHeading = $model->AccName;
@@ -19,10 +18,10 @@ $this->viewHeading = $model->AccName;
 			<div class="widget-content">
 				<div class="row-fluid">
 				<div class="span4">
-						<div class="widget-content">
-							<h5>Account type: <?php echo $model->relAccType->AccTypeName;?></h5>
-							<h5>Limit: <?php echo '-'.EMoney::formatAmount($model->OverDraftLimit);?>
-						</div>
+					<div class="widget-content">
+						<h5>Account type: <?php echo $model->relAccType->AccTypeName;?></h5>
+						<h5>Limit: <?php echo '-'.EMoney::formatAmount($model->OverDraftLimit);?>
+					</div>
 				</div>
 				<div class="span8">
 					<div class="well">
@@ -88,7 +87,7 @@ $chartData = $transactionsModel->getAccountCashflowJson($model->Id);
 		<div class="widget-box">
 			<div class="widget-title">
 				<span class="icon"><i class="icon icon-barcode"></i></span>
-				<h5>Transactions</h5>
+				<h5>Transactions for <?php echo $model->AccName;?></h5>
 			</div>
 			<div class="widget-content">
 				<?php
@@ -103,6 +102,7 @@ $chartData = $transactionsModel->getAccountCashflowJson($model->Id);
 						array(
 							'name' => 'TransDate',
 							'value' => 'date("M j, Y", $data->transDateInt)',
+							'htmlOptions'=>array('style'=>'width: 130px'),
 						),
 						array(
 							'name' => 'PayeeId',
@@ -126,8 +126,9 @@ $chartData = $transactionsModel->getAccountCashflowJson($model->Id);
 						),
 						array(
 							'header'    => 'Balance',
-							'class'     => 'TotalColumn',
-							'attribute' => 'TransAmount',
+							'value' => 'EMoney::isWithdrawal($data->TransAmount)',
+//							'class'     => 'TotalColumn',
+//							'attribute' => 'TransAmount',
 						),
 						array(
 							'class'=>'bootstrap.widgets.TbButtonColumn',

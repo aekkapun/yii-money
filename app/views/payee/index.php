@@ -1,57 +1,46 @@
 <?php
+// Set breadcrumbs
 $this->breadcrumbs = array(
 	'Payees'
 );
-$this->tasksMenu[]=array('label'=>'New Payee', 'icon'=>'pencil', 'url'=>array('create'));
 
-Yii::app()->clientScript->registerScript('search', "
-$('.search-button').click(function(){
-	$('.search-form').slideToggle();
-	return false;
-});
-$('.search-form form').submit(function(){
-	$.fn.yiiGridView.update('payee-grid', {
-		data: $(this).serialize()
-	});
-	return false;
-});
-");
+// Add available tasks / actions
+$this->tasksMenu=array('create');
+
+// Set view haeading
+$this->viewHeading = 'Payees';
+
 ?>
 
 <div class="row-fluid">
-	<h1>Manage Payees</h1>
-	<?php echo CHtml::link('Advanced Search', '#', array('class' => 'search-button btn btn-primary btn-info')); ?>
-	<div class="search-form" style="display:none">
-		<?php
-		$this->renderPartial('_search', array(
-			'model' => $model,
-		));
-		?>
-	</div><!-- search-form -->	
+	<div class="span12">
+		<div class="widget-box">
+			<div class="widget-title">
+				<span class="icon"><i class="icon icon-user"></i></span>
+				<h5>Payees</h5>
+			</div>
+			<div class="widget-content">
+				<?php
+				$this->widget('bootstrap.widgets.TbGridView', array(
+					'type'=>'striped bordered condensed',
+					'id' => 'payee-grid',
+					'pagerCssClass' =>'pagination alternate',
+					'dataProvider' => $model->search(),
+					'filter' => $model,
+					'columns' => array(
+						array(
+							'name' => 'PayeeName',
+							'type' => 'raw',
+							'value' => 'EMoney::payeeLink($data)'
+						),
+						array(
+							'class'=>'bootstrap.widgets.TbButtonColumn',
+							'htmlOptions'=>array('style'=>'width: 50px'),
+						)
+					)
+				));
+				?>	
+			</div>
+		</div>
+	</div>
 </div>
-
-<br/>
-<br/>
-<div class="row-fluid">
-	<h2>Payees</h2>
-	<?php
-	$this->widget('bootstrap.widgets.TbGridView', array(
-		'type'=>'striped bordered condensed',
-		'id' => 'payee-grid',
-		'dataProvider' => $model->search(),
-		'filter' => $model,
-		'columns' => array(
-			array(
-				'name' => 'PayeeName',
-				'type' => 'raw',
-				'value' => 'EMoney::payeeLink($data)'
-			),
-			array(
-				'class'=>'bootstrap.widgets.TbButtonColumn',
-				'htmlOptions'=>array('style'=>'width: 50px'),
-			)
-		)
-	));
-	?>
-</div>
-

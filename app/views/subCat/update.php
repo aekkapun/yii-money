@@ -5,6 +5,9 @@ $this->breadcrumbs=array(
 	'Update',
 );
 
+// Add available tasks / actions
+$this->tasksMenu=array('create','delete');
+
 $this->menu=array(
 	array('label'=>'List Sub Categories', 'url'=>array('index')),
 	array('label'=>'Create Sub Categories', 'url'=>array('create')),

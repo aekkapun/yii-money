@@ -31,11 +31,7 @@
 	<!-- Content header start -->
 	<div id="content-header">
 		<h1><?php echo $this->viewHeading; ?></h1>
-		<div class="btn-group">
-			<a class="btn btn-large tip-bottom" title="Add new"><i class="icon-plus"></i></a>
-			<a class="btn btn-large tip-bottom" title="Edit"><i class="icon-edit"></i></a>
-			<a class="btn btn-large tip-bottom" title="Delete"><i class="icon-trash"></i></a>
-		</div>
+		<?php echo Yii::app()->controller->renderTaskButtons();?>
 	</div>
 	<!-- Content header ends -->
 	

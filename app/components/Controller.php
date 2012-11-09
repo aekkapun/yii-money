@@ -21,6 +21,15 @@ class Controller extends CController
 	 */
 	public $menu = array();
 	public $tasksMenu = array();
+
+	/**
+	 * @var array context menu items. This property will be responsible for holding task menu buttons config.
+	 */
+	public $taskMenuItems= array(
+		'create'=> array('icon'=>'plus','title'=>'Add new '),
+		'update'=> array('icon'=>'edit','title'=>'Edit '),
+		'delete'=> array('icon'=>'trash','title'=>'Delete '),
+	);
 	
 	/**
 	 * @var array the breadcrumbs of the current page. The value of this property will
@@ -64,4 +73,27 @@ class Controller extends CController
 			Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/js/'.$jsFile.'.js');
 		}
 	}
+
+	/**
+	 * @desc Renders top level task icons in the header, items are requested in the view as actions.
+	 */
+	public function renderTaskButtons()
+	{
+		$currentController = Yii::app()->controller->id;
+		$queryId = Yii::app()->getRequest()->getQuery('id');
+
+		$html = '<div class="btn-group">';
+		foreach ($this->tasksMenu as $menuItem) {
+			if (array_key_exists($menuItem, $this->taskMenuItems)) {
+				$button = $this->taskMenuItems[$menuItem];
+				$html.= CHtml::link('<i class="icon-' . $button['icon'] . '"></i>',
+					array($currentController . '/' . $menuItem, $menuItem == 'create' ? '' : 'id' => $menuItem == 'create' ? '' : $queryId),
+					array('class' => 'btn btn-large tip-bottom', 'title' => $button['title'] . $currentController));
+			}
+		}
+		$html.='</div>';
+
+		return $html;
+	}
+	
 }
