@@ -1,64 +1,46 @@
 <?php
-$this->breadcrumbs=array(
+// Set breadcrumbs
+$this->breadcrumbs = array(
 	'Accounts'
 );
 
 // Add available tasks / actions
 $this->tasksMenu=array('create');
 
-Yii::app()->clientScript->registerScript('search', "
-$('.search-button').click(function(){
-	$('.search-form').slideToggle();
-	return false;
-});
-$('.search-form form').submit(function(){
-	$.fn.yiiGridView.update('account-grid', {
-		data: $(this).serialize()
-	});
-	return false;
-});
-");
+// Set view haeading
+$this->viewHeading = 'Accounts';
 ?>
 
 <div class="row-fluid">
-	<h1>Manage Accounts</h1>
-	<div class="row-fluid">
-		<div class="action-buttons">
-			<?php echo CHtml::Link('Add New Account',array('create'),array('class'=>'btn btn-success')); ?>
-			<?php echo CHtml::link('Advanced Search', '#', array('class' => 'search-button btn btn-primary btn-info')); ?>
+	<div class="span12">
+		<div class="widget-box">
+			<div class="widget-title">
+				<span class="icon"><i class="icon icon-user"></i></span>
+				<h5>Accounts</h5>
+			</div>
+			<div class="widget-content">
+				<?php
+					$this->widget('bootstrap.widgets.TbGridView', array(
+						'type'=>'striped bordered condensed',
+						'id' => 'account-grid',
+						'dataProvider' => $model->search(),
+						'pagerCssClass' =>'pagination alternate',
+						'filter' => $model,
+						'columns' => array(
+							array(
+								'name' => 'AccTypeId',
+								'value' => '$data->relAccType->AccTypeName',
+							),
+							'AccName',
+							'OverDraftLimit',
+							array(
+								'class'=>'bootstrap.widgets.TbButtonColumn',
+								'htmlOptions'=>array('style'=>'width: 50px'),
+							)
+						)
+					));
+				?>
+			</div>
 		</div>
 	</div>
-</div>
-
-<div class="row-fluid">
-		<div class="search-form" style="display:none">
-		<?php
-		$this->renderPartial('_search', array(
-			'model' => $model,
-		));
-		?>
-	</div><!-- search-form -->	
-</div>
-<div class="row-fluid">
-	<h2>Accounts</h2>
-	<?php
-	$this->widget('bootstrap.widgets.TbGridView', array(
-		'type'=>'striped bordered condensed',
-		'id' => 'account-grid',
-		'dataProvider' => $model->search(),
-		'filter' => $model,
-		'columns' => array(
-			array(
-				'name' => 'AccTypeId',
-				'value' => '$data->relAccType->AccTypeName',
-			),
-			'AccName',
-			'OverDraftLimit',
-			array(
-				'class'=>'bootstrap.widgets.TbButtonColumn',
-				'htmlOptions'=>array('style'=>'width: 50px'),
-			)
-		)
-	));
-	?>
 </div>
