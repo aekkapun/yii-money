@@ -136,6 +136,17 @@ class Transaction extends CActiveRecord
 		));		
 	}
 	
+	public function getPayeeTransactions($payeeId)
+	{
+		$criteria=new CDbCriteria;
+		$criteria->condition = 'PayeeId='.$payeeId;
+		$criteria->order = 'TransDate DESC';
+
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));		
+	}
+	
 	
 	/**
 	 * @desc Function to return an JSON array of transactions by account Id transactions
@@ -169,13 +180,6 @@ class Transaction extends CActiveRecord
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));		
-	}
-	
-
-	public function getAccountBalances()
-	{
-
-		
 	}
 	
 }

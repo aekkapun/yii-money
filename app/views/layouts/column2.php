@@ -1,28 +1,34 @@
 <?php $this->beginContent('//layouts/main'); ?>
 
 <!-- Sidebar starts -->
-<div id="sidebar">
+<div id="sidebar-accounts">
 	<?php
 	$this->widget('zii.widgets.CMenu', array(
-	'encodeLabel' => false,
-	'items' => array(
-		array('label' => '<i class="icon icon-home"></i><span>Dashboard</span>', 'url' => array('transaction/index')),
-		array('label' => '<i class="icon icon-book"></i><span>Accounts</span>', 'url' => '#',
-			'itemOptions' => array('class' => 'submenu'),
-			'items' => AccType::model()->getAccountTypeMenuItems(false)),
-		array('label' => '<i class="icon icon-calendar"></i><span>Bills &amp; Deposits</span>', 'url' => array('/')),
-		array('label' => '<i class="icon icon-folder-open"></i><span>Category</span>', 'url' => '#',
-			'itemOptions' => array('class' => 'submenu'),
-			'items' => array(
-				array('label' => 'Category Groups', 'url' => '/cat/index'),
-				array('label' => 'Categories', 'url' => '/subcat/index')
-		)),
-		array('label' => '<i class="icon icon-user"></i><span>Payees</span>', 'url' => array('payee/index')),
-		array('label' => 'Login', 'url' => array('admin/login'), 'visible' => Yii::app()->user->isGuest),
-		array('label' => 'Logout', 'url' => array('admin/logout'), 'visible' => !Yii::app()->user->isGuest),
-	)
-));
-?>
+		'encodeLabel' => false,
+		'items' => array(
+			array('label' => '<h4>Bank Accounts</h4>', 'url' => array('acctype/view', 'id' => 1),
+				'itemOptions' => array('class' => 'account-list'),
+				'items' => Account::model()->getAccountMenuItems(1)
+			),
+			array('label' => '<h4>Credit Accounts</h4>', 'url' => array('acctype/view','id' => 2),
+				'itemOptions' => array('class' => 'account-list'),
+				'items' => Account::model()->getAccountMenuItems(2)
+			),
+			array('label' => '<h4>Savings Accounts</h4>', 'url' => array('acctype/view', 'id' => 5),
+				'itemOptions' => array('class' => 'account-list'),
+				'items' => Account::model()->getAccountMenuItems(5)
+			),
+			array('label' => '<h4>Loans & Liabilities</h4>', 'url' => array('acctype/view', 'id' => 3),
+				'itemOptions' => array('class' => 'account-list'),
+				'items' => Account::model()->getAccountMenuItems(3)
+			),
+			array('label' => '<h4>Other Accounts</h4>', 'url' => array('acctype/view', 'id' => 4),
+				'itemOptions' => array('class' => 'account-list'),
+				'items' => Account::model()->getAccountMenuItems(4)
+			)
+		)
+	));
+	?>
 </div>
 <!-- Sidebar ends -->
 

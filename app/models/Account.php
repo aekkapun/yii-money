@@ -97,22 +97,30 @@ class Account extends CActiveRecord
 	}
 	
 	/**
-	 * get an array of Account models
-	 * @return array of Account models
+	 * get an array of Account models by account type
+	 * @param int $accountTypeId Account Type Id
+	 * @return array of Account models by account type
 	 */
-	public function getAccountMenuItems($heading = true, $headingText = 'Accounts') 
+	public function getAccountMenuItems($accTypeId) 
 	{
+		$accounts = $this->findAllByAttributes(array('AccTypeId'=>$accTypeId),array('order'=>'AccName ASC'));
+		
 		$menuItems = array();
-//		$menuItems[] = array('label'=>'Accounts');
-		foreach ($this->findAll() as $account)
-			$menuItems[] = array('label' => $account->AccName,'url' => array('account/view', 'id' => $account->Id));
+		foreach ($accounts as $account)
+			$menuItems[] = array('label' => '<span class="account-name">'.$account->AccName.'</span><span class="account-balance green">&pound;134.00</span>','url' => array('account/view', 'id' => $account->Id));
+		
 		return $menuItems;
 	}
-	
-	public function getAccounts($accType)
+
+	/**
+	 * get an array of Account models by Account Type
+	 * @param int $accountTypeId Account Type Id
+	 * @return object $criteria CActiveDataProvider
+	 */
+	public function getAccounts($accTypeId)
 	{
 		$criteria=new CDbCriteria;
-		$criteria->condition = 'AccTypeId='.$accType;
+		$criteria->condition = 'AccTypeId='.$accTypeId;
 		$criteria->order = 'AccName DESC';
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

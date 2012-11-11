@@ -14,39 +14,24 @@
 		
 		<div id="user-nav" class="navbar navbar-inverse">
             <ul class="nav btn-group">
-                <li class="btn btn-inverse" ><a title="" href="/transaction"><i class="icon icon-barcode"></i> <span class="text">Transactions</span></a></li>
-                <li class="btn btn-inverse dropdown" id="menu-messages"><a href="#" data-toggle="dropdown" data-target="#menu-messages" class="dropdown-toggle"><i class="icon icon-star"></i> <span class="text">Favorite Accounts</span> <b class="caret"></b></a>
-                <!--<li class="btn btn-inverse dropdown" id="menu-messages"><a href="#" data-toggle="dropdown" data-target="#menu-messages" class="dropdown-toggle"><i class="icon icon-star"></i> <span class="text">Favorite Accounts</span> <span class="label label-success">3</span> <b class="caret"></b></a>-->
+                <li class="btn btn-inverse" ><a title="" href="/dashboard"><i class="icon icon-home"></i> <span class="text">Dashboard</span></a></li>
+                <li class="btn btn-inverse" ><a title="" href=""><i class="icon icon-book"></i> <span class="text">Income &amp; Expenses</span></a></li>
+                <li class="btn btn-inverse" ><a title="" href="/account"><i class="icon icon-briefcase"></i> <span class="text">Accounts</span></a></li>
+                <li class="btn btn-inverse" ><a title="" href=""><i class="icon icon-calendar"></i> <span class="text">Bills &amp; Deposits</span></a></li>
+                <li class="btn btn-inverse dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="icon icon-tags"></i> <span class="text">Categories</span> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a class="sAdd" title="" href="#">First Direct Current Account</a></li>
-                        <li><a class="sAdd" title="" href="#">Natwest Joint Account</a></li>
-                        <li><a class="sAdd" title="" href="#">Barclay Card</a></li>
+                        <li><a class="sAdd" title="" href="/cat">Category Groups</a></li>
+                        <li><a class="sAdd" title="" href="/subcat">Categories</a></li>
                     </ul>
                 </li>
-                <li class="btn btn-inverse"><a title="" href="#"><i class="icon icon-cog"></i> <span class="text">Settings</span></a></li>
+				<li class="btn btn-inverse"><a title="" href="/payee"><i class="icon icon-user"></i> <span class="text">Payees</span></a></li>
+                <li class="btn btn-inverse"><a title="" href="/settings"><i class="icon icon-cog"></i> <span class="text">Settings</span></a></li>
                 <li class="btn btn-inverse"><a title="" href="login.html"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
             </ul>
         </div>
 		
-		
-<!--		<div id="user-nav" class="navbar navbar-inverse">
-			<?php
-//			$this->widget('zii.widgets.CMenu', array(
-//				'htmlOptions' => array(
-//					'class' => 'nav btn-group'
-//				),
-//				'encodeLabel' => false,
-//				'items' => array(
-//					array('label' => '<i class="icon icon-book"></i><span>Accounts</span>', 'url' => '#',
-//						'linkOptions' => array('class' => 'btn btn-inverse dropdown'),
-//						'items' => AccType::model()->getAccountTypeMenuItems(false)),
-////						'submenuHtmlOptions' => array('class' => 'dropdown-menu'),
-//				)
-//			));
-			?>
-        </div>-->
-		
 		<?php echo $content; ?>
+		
 	</body>
 </html>
 

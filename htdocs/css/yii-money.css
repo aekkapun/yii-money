@@ -7,18 +7,28 @@
 
 
 /* General */
+body{background-color: #272727;}
 
+#content{margin-left: 230px;}
 
+/*** Accounts Sidebar ***/
+#sidebar-accounts{position: relative;z-index: 16;color: #FFF;width: 190px;}
+#sidebar-accounts h4{color: #FFF;font-size: 18px;font-weight: 100;line-height: 20px;margin: 10px 0 6px;}
+#sidebar-accounts li.account-list {border-bottom: 1px solid #555;margin-bottom: 10px;padding-bottom: 30px;}
+#sidebar-accounts li.account-list:last-child{border: none;padding: none;}
+#sidebar-accounts ul{list-style: none;margin: 0;}
+#sidebar-accounts > ul{position: absolute;width: 190px;left: 20px;top: 10px}
+#sidebar-accounts li a{color: #999;font-size: 0.74em;font-weight: 200;overflow: hidden;display: block;margin-right: -20px;padding-right: 20px;}
+#sidebar-accounts li a span{display: inline-block}
+#sidebar-accounts li a span.account-name{float: left;}
+#sidebar-accounts li a span.account-balance{float: right;}
+#sidebar-accounts a:hover, #sidebar-accounts .active a{color: #fff;}
+#sidebar-accounts li.active > a{background: url("../img/menu-active.png") no-repeat scroll right center transparent !important;}
+	
 .green{color: #03bd03}
 .red{color: #ff0000}
 
- /*Headings*/ 
-/*h2, h3, h4, h5, h6{margin:0 0 5px 0px}
-h1{font-size: 27px;line-height: 29px;margin: 0 0 20px;}
-h2{font-size: 22px;line-height: 21px;}
-
-
-*/
+/*** Forms ***/
 .form{overflow: hidden;}
 .form .control-group{width:270px;height:80px;float: left;margin:0px;}
 .form .control-group.wide {clear: both;float: none;height: 40px;width: auto;}
@@ -39,3 +49,8 @@ h2{font-size: 22px;line-height: 21px;}
 table.detail-view th{text-align: left;font-size: 14px;}
 
 #breadcrumb span{color: #444444;font-weight: bold;display: inline-block;font-size: 11px;padding: 8px 20px 8px 10px;}
+
+/*** Media Queries ***/
+@media (max-width: 480px) {
+	#sidebar-accounts{display: none;}
+}
