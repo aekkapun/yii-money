@@ -48,6 +48,7 @@ class Controller extends CController
 			'uniform',
 			'chosen',
 			'fullcalendar',
+			'select2',
 			'unicorn.main',
 			'unicorn.grey',
 			'yii-money'
