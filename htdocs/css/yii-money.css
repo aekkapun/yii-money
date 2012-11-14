@@ -9,7 +9,7 @@
 /* General */
 body{background-color: #272727;}
 
-#content{margin-left: 230px;}
+#content{margin-left: 230px;border-bottom-left-radius: 8px;margin-bottom: 38px;}
 
 /*** Accounts Sidebar ***/
 #sidebar-accounts{position: relative;z-index: 16;color: #FFF;width: 190px;}
@@ -29,11 +29,11 @@ body{background-color: #272727;}
 .red{color: #ff0000}
 
 /*** Forms ***/
-.form{overflow: hidden;}
+/*.form{overflow: hidden;}
 .form .control-group{width:270px;height:80px;float: left;margin:0px;}
 .form .control-group.wide {clear: both;float: none;height: 40px;width: auto;}
 .form .control-group.buttons{padding:13px 25px 0 0;width:245px;height:67px;}
-.search-form{padding-top:15px;}
+.search-form{padding-top:15px;}*/
 
 .sidebar-nav{margin-bottom: 20px;}
 .tab-content form{margin:0px;}
